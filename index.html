@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechNest - Smart Gadgets Hub</title>
+    <link rel="icon" type="image/png" href="assets/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+    <link rel="shortcut icon" href="assets/icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="assets/icons/site.webmanifest" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/script.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <h1 class="logo">TechNest</h1>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+                <span></span><span></span><span></span>
+            </button>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#Reviews">Reviews</a></li>
+                    <li><a href="#support">Support</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="container">
+            <h2>Discover the Latest in Smart Tech</h2>
+            <p>Explore our hand-picked collection of gadgets designed for the future.</p>
+            <a href="#products" class="btn-primary">Shop Now</a>
+        </div>
+    </section>
+
+    <section id="products" class="section">
+        <div class="container">
+            <h3 class="section-title">Featured Products</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Smartphones</h4>
+                    <p>Cutting-edge phones with high performance, AI features, and sleek designs.</p>
+                </div>
+                <div class="card">
+                    <h4>Wearables</h4>
+                    <p>Smartwatches and fitness trackers to keep you connected and healthy on the go.</p>
+                </div>
+                <div class="card">
+                    <h4>Accessories</h4>
+                    <p>From wireless earbuds to power banks—tech essentials to power your day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="section light">
+        <div class="container">
+            <h3 class="section-title">Latest From Our Blog</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Top 5 Phones in 2025</h4>
+                    <p>An expert round-up of this year's best smartphones by performance and value.</p>
+                </div>
+                <div class="card">
+                    <h4>Smartwatch Buying Guide</h4>
+                    <p>Find the perfect wearable based on battery life, features, and design.</p>
+                </div>
+                <div class="card">
+                    <h4>Wireless Audio Trends</h4>
+                    <p>Everything you need to know about the rise of true wireless sound tech.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Reviews" class="section">
+        <div class="container">
+            <h3 class="section-title">Customer Reviews</h3>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"TechNest made upgrading my gadgets so easy. Their product guides were spot on!"</p>
+                    <span>— Jane K., 29</span>
+                </div>
+                <div class="testimonial">
+                    <p>"My smartwatch was delivered fast and works perfectly. I love their clean, modern site!"</p>
+                    <span>— Liam P., 35</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="support" class="section light">
+        <div class="container">
+            <h3 class="section-title">Support & FAQ</h3>
+            <div class="faq-grid">
+                <div class="faq">
+                    <h4>How long does delivery take?</h4>
+                    <p>Orders are processed within 24 hours and delivered within 3–5 business days.</p>
+                </div>
+                <div class="faq">
+                    <h4>Is there a product warranty?</h4>
+                    <p>Yes, all products come with a minimum 1-year manufacturer warranty.</p>
+                </div>
+                <div class="faq">
+                    <h4>Can I return or exchange items?</h4>
+                    <p>We accept returns within 14 days. Exchanges are also supported based on stock availability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact" id="contact">
+    <div class="container">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-subtitle">We're Here to Help</p>
+        <p class="section-description">Whether you have questions, need help getting started, or want to learn more—reach out anytime.</p>
+        <div class="contact-wrapper">
+            <div class="contact-details">
+                <h3>Contact Details</h3>
+                <p><strong>Email:</strong> support@tech.com</p>
+                <p><strong>Phone:</strong> +1 (323) 456-7890</p>
+                <p><strong>Address:</strong> 123 Wellness Way, Calm City, CA 90210</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p class="response-time">We’ll respond within 12 hours.</p>
+            </div>
+            <div class="contact-form-wrapper">
+                <h3>Send Us a Message</h3>
+                <form id="contact-form" action="/submit" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <input type="text" id="message" name="message" placeholder="Your message" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+                <div class="form-message"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>© 2025 TechNest. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS with your user ID (uncomment and replace with your ID)
+        // emailjs.init('YOUR_USER_ID');
+    </script>
+</body>
+</html>
