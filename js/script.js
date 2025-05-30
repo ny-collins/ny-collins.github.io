@@ -23,27 +23,3 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // Form submission handling
-    const form = document.getElementById('contact-form');
-    const formMessage = document.querySelector('.form-message');
-
-    if (form && formMessage) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = form.querySelector('#email').value;
-            const message = form.querySelector('#message').value;
-
-            if (email && message) {
-                formMessage.textContent = 'Message sent successfully!';
-                formMessage.classList.add('success');
-                formMessage.classList.remove('error');
-                form.reset();
-            } else {
-                formMessage.textContent = 'Please fill out all fields.';
-                formMessage.classList.add('error');
-                formMessage.classList.remove('success');
-            }
-        });
-    }
-});
