@@ -2,41 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us - Swiftel</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Swiftel Fibre</title>
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Lottie -->
+  <script src="https://unpkg.com/lottie-web@latest/build/player/lottie.min.js"></script>
 </head>
 <body>
-  <header class="navbar">
+  <!-- NAVBAR -->
+  <nav class="navbar">
     <div class="container">
-      <h1 class="logo">Swiftel</h1>
-      <nav>
+      <a href="index.html" class="logo-block">
+        <img src="images/logo.png" alt="Swiftel Logo" />
+        <div class="logo-text">
+          <h1>SWIFTEL FIBRE</h1>
+          <p>Reliable. Affordable. Everywhere.</p>
+        </div>
+      </a>
+      <div class="hamburger" id="hamburger"></div>
+      <div class="nav-menu">
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html" class="active">About</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-      </nav>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <section class="container" style="padding: 4rem 0;">
-    <h2>About Swiftel</h2>
-    <p style="max-width: 800px; margin-top: 1.5rem;">
-      Swiftel is a Tier 2 Internet Service Provider based in Kenya, committed to delivering high-speed, affordable, and reliable internet access to homes and businesses. 
-      <br><br>
-      We leverage cutting-edge fiber optic technology and partner with global infrastructure providers to ensure a seamless online experience. From rural connectivity to enterprise solutions, our mission is to keep everyone connected, always.
-    </p>
-    <div style="margin-top: 2rem;">
-      <img src="images/service.png" alt="Our team" style="width: 100%; border-radius: 16px;" />
+  <!-- ABOUT SECTION -->
+  <section class="about">
+    <div class="container">
+      <div class="about-image" data-aos="fade-right">
+        <img src="images/service.png" alt="About Swiftel Fibre" />
+      </div>
+      <div class="about-content" data-aos="fade-left">
+        <h2>About Swiftel Fibre</h2>
+        <p>
+          Swiftel Fibre is more than just an internet provider — we are a digital enabler dedicated to delivering fast, stable, and affordable internet to homes and businesses across Nairobi and beyond.
+        </p>
+        <p>
+          We have evolved from our humble beginnings to become one of the fastest-growing ISPs in the region, with a focus on customer satisfaction, innovation, and network reliability.
+        </p>
+        <ul>
+          <li>Licensed ISP with direct peering and global transit</li>
+          <li>Serving homes, businesses, and estates with tailored plans</li>
+          <li>Team of certified network engineers and local support agents</li>
+          <li>Track record of fast installations and excellent SLAs</li>
+        </ul>
+        <a href="contact.html" class="cta-btn">Get Connected Today</a>
+      </div>
     </div>
   </section>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Swiftel. All rights reserved.</p>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <!-- Logo + Tagline -->
+      <div class="footer-brand">
+        <img src="images/SwiftelLogo.png" alt="Swiftel Logo" class="footer-logo" />
+        <p>Empowering Internet Generation across Nairobi – one connection at a time.</p>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><i class="fas fa-phone-alt"></i> +254 111250055</p>
+        <p><i class="fas fa-envelope"></i> swiftytelk@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+      </div>
+
+      <!-- Social Links -->
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://facebook.com/Geoffreynganga.co.ke"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://tiktok.com/@swiftel.fibre"><i class="fab fa-tiktok"></i></a>
+          <a href="https://instagram.com/swiftel.fibre"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/254111250055"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Swiftel Fibre. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      easing: 'ease-in-out',
+      once: true
+    });
+  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
+
