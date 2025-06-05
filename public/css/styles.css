@@ -524,7 +524,7 @@ img {
   padding: 4rem 2rem;
   text-align: center;
   border-radius: 16px;
-  margin: 4rem auto;
+  margin: 4rem auto 0;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
@@ -557,4 +557,113 @@ img {
 .contact-cta .cta-btn:hover {
   background: #facc15;
   transform: translateY(-2px) scale(1.05);
+}
+
+/* ===================== */
+/* FOOTER SECTION        */
+/* ===================== */
+.site-footer {
+  background-color: #002e47;
+  color: #f4f4f4;
+  padding: 4rem 0 2rem;
+  font-size: 0.95rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2.5rem;
+}
+
+.footer-brand img.footer-logo {
+  width: 130px;
+  margin-bottom: 1rem;
+  filter: brightness(300%) contrast(120%);
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #d0d0d0;
+}
+
+.footer-links h4,
+.footer-contact h4,
+.footer-social h4 {
+  margin-bottom: 1rem;
+  color: #fbbf24;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: #f4f4f4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #fbbf24;
+}
+
+.footer-contact p {
+  margin-bottom: 0.5rem;
+  color: #d0d0d0;
+}
+
+.footer-contact i {
+  margin-right: 0.5rem;
+  color: #fbbf24;
+}
+
+.footer-social .social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.footer-social i {
+  font-size: 1.2rem;
+  color: #f4f4f4;
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover i {
+  color: #fbbf24;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  font-size: 0.85rem;
+  color: #bbb;
+  border-top: 1px solid #444;
+  margin-top: 2rem;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  font-size: 1.9rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  background-color: #1ebe5b;
+  color: #fff;
 }
