@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TechHaven - Gadget Store</title>
   <link rel="stylesheet" href="styles.css" />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
 </head>
 <body>
   <!-- ==================== NAVBAR ==================== -->
@@ -379,23 +384,27 @@
   </div>
 </section>
 
-<!-- CONTACT SECTION -->
-<section class="contact-section" id="contact">
+<!-- ====CONTACT SECTION==================================== -->
+<section class="section contact" id="contact">
   <div class="container">
     <h2 class="section-title">Get in Touch</h2>
-    <p class="section-subtitle">We’re Here to Help</p>
-    <p class="section-description">Whether you have questions, want to inquire about products, or just want to chat — feel free to reach out.</p>
-
+    <p class="section-subtitle">We're Here to Help</p>
+    <p class="section-description">
+      Whether you have questions, need help getting started, or want to learn more—reach out anytime.
+    </p>
     <div class="contact-wrapper">
       <div class="contact-details">
         <h3>Contact Details</h3>
         <p><strong>Email:</strong> mwangicollins391@gmail.com</p>
         <p><strong>Phone:</strong> +254 706 030777</p>
         <p><strong>Address:</strong> Kasarani, Nairobi 00100</p>
-        <div class="social-links">
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        </div>
+        <div class="social-links contact-socials">
+  <a href="https://facebook.com" aria-label="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+  <a href="https://instagram.com" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://x.com" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+  <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+</div>
+
         <p class="response-time">We typically respond within 1.5 business days.</p>
       </div>
 
@@ -404,11 +413,11 @@
         <form id="contact-form">
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Your email" required autocomplete="off" class="border-input" />
+            <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="off" />
           </div>
-          <div class="form-group">
+          <div class="form-group message-field">
             <label for="message">Message</label>
-            <input type="text" id="message" name="message" placeholder="Your message" required autocomplete="off" class="border-input" />
+            <input type="text" id="message" name="message" placeholder="Message goes here..." required autocomplete="off" />
           </div>
           <button type="submit" class="btn-primary">Send Message</button>
         </form>
@@ -418,6 +427,48 @@
   </div>
 </section>
 
+<!-- ===================== FOOTER SECTION ===================== -->
+<footer class="footer-section">
+  <div class="container footer-grid">
+
+    <!-- Left Card: Info Block -->
+    <div class="footer-info-box">
+      <h2 class="footer-logo">TechHaven</h2>
+
+      <div class="footer-links-wrapper">
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#support">Support</a></li>
+        </ul>
+
+        <div class="footer-socials">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <span>|</span>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+
+    <!-- Right Card: CTA Background Image -->
+    <div class="footer-cta-box">
+      <div class="footer-cta-content">
+        <h3 class="footer-cta-title">Need Help Choosing the Right Gadget?</h3>
+        <a href="#support" class="footer-cta-btn">Talk to Our Team</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
 
   <!-- ===========SCROLL TO TOP BUTTON============== -->
   <button id="scrollToTopBtn" title="Go to top">↑</button>
