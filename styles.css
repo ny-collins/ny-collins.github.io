@@ -11,6 +11,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f2f4f7;
   color: #1e2a38;
+  padding-top: 80px;
 }
 
 /* ====================================================
@@ -34,13 +35,16 @@ body {
    NAVBAR
    ==================================================== */
 .navbar {
-  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f2f4f7;
   padding: 1.2rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .site-title {
@@ -126,7 +130,7 @@ body {
    HERO SECTION
    ==================================================== */
 .hero {
-  padding: 4rem 2rem;
+  padding: 8rem 2rem 4rem;
   background-color: #f2f4f7;
   display: flex;
   justify-content: center;
@@ -192,6 +196,12 @@ body {
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 5rem 1.5rem 2rem;
+  }
 }
 
 /* ====================================================
@@ -1356,4 +1366,3 @@ body {
     align-items: flex-start;
   }
 }
-
