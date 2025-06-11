@@ -7,9 +7,9 @@ const animation = lottie.loadAnimation({
   path: 'assets/animations/hamburger.json'
 });
 
-animation.setSpeed(2.5);
+animation.setSpeed(3);
 
-let isMenuOpen = false;
+let isMenuOpen = false; 
 
 const hamburger = document.getElementById('hamburgerLottie');
 const navMenu = document.querySelector('.nav-menu');
