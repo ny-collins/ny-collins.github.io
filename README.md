@@ -4,9 +4,6 @@
 ## 🌐 Live Demo
 [View Site on GitHub Pages](https://ny-collins.github.io/)
 
-## 📁 Repository
-[GitHub Repository](https://github.com/<your-username>/<repo-name>)
-
 ---
 
 ## 🧩 Project Overview
