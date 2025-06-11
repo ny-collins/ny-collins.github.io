@@ -107,3 +107,110 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     item.classList.toggle('active');
   });
 });
+
+// ===================== CART SYSTEM =========================
+
+// Retrieve cart or initialize empty
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// -------------------- Update Cart Count on Navbar --------------------
+function updateCartCountDisplay() {
+  const cartCountEl = document.getElementById("cart-count");
+  if (!cartCountEl) return;
+
+  cartCountEl.textContent = cart.length;
+
+  // Optional bounce animation
+  cartCountEl.classList.add("cart-bounce");
+  setTimeout(() => cartCountEl.classList.remove("cart-bounce"), 300);
+}
+
+// -------------------- Add Item to Cart --------------------
+function addToCart(product) {
+  cart.push(product);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCountDisplay();
+}
+
+// -------------------- Render Cart Items (Only on cart.html) --------------------
+function renderCartPage() {
+  const cartItemsContainer = document.getElementById("cart-items");
+  const cartEmptyMsg = document.getElementById("cart-empty");
+  const cartSummary = document.getElementById("cart-summary");
+
+  if (!cartItemsContainer || !cartSummary || !cartEmptyMsg) return;
+
+  if (cart.length === 0) {
+    cartEmptyMsg.style.display = "block";
+    cartSummary.style.display = "none";
+    return;
+  }
+
+  cartEmptyMsg.style.display = "none";
+  cartSummary.style.display = "block";
+
+  let total = 0;
+  cartItemsContainer.innerHTML = "";
+
+  cart.forEach((item, index) => {
+    const priceNumber = parseInt(item.price.replace(/[^\d]/g, ""));
+    total += priceNumber;
+
+    const itemEl = document.createElement("div");
+    itemEl.className = "cart-item";
+    itemEl.innerHTML = `
+      <div class="cart-item-details">
+        <h4 class="cart-item-title">${item.name}</h4>
+        <p class="cart-item-price">${item.price}</p>
+      </div>
+      <button class="remove-btn" data-index="${index}" aria-label="Remove">&times;</button>
+    `;
+    cartItemsContainer.appendChild(itemEl);
+  });
+
+  // Cart total and clear button
+  cartSummary.innerHTML = `
+    <p class="cart-total">Total: KES ${total.toLocaleString()}</p>
+    <button class="clear-cart-btn" id="clear-cart-btn">Clear Cart</button>
+  `;
+
+  // Event: remove single item
+  document.querySelectorAll(".remove-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const index = parseInt(btn.dataset.index);
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCartPage(); // Re-render
+      updateCartCountDisplay();
+    });
+  });
+
+  // Event: clear entire cart
+  const clearBtn = document.getElementById("clear-cart-btn");
+  clearBtn.addEventListener("click", () => {
+    localStorage.removeItem("cart");
+    cart = [];
+    renderCartPage();
+    updateCartCountDisplay();
+  });
+}
+
+// -------------------- DOM Ready Setup --------------------
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCountDisplay();
+
+  // Hook up product "Add to Cart" buttons
+  document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const product = {
+        name: btn.dataset.name,
+        price: btn.dataset.price,
+        image: btn.dataset.image,
+      };
+      addToCart(product);
+    });
+  });
+
+  // If on cart.html, render cart page
+  renderCartPage();
+});
