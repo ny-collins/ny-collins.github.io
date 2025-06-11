@@ -89,10 +89,12 @@ While preserving the card structure and layout spacing at large breakpoints, Tec
 
 1. Clone this repo:
 ```bash
-git clone https://github.com/<your-username>/<repo-name>.git
+git clone https://github.com/ny-collins/ny-collins.github.io.git
 ```
 
 2. Open `index.html` in your browser.
+
+3. Note, The Lottie animation of the hamburger menu icon is not going to be displayed due to violation of CORS policy. To evade this, use live-server instead of running a static file (index.html) directly via your browser.
 
 ---
 
