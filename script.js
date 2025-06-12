@@ -1,40 +1,48 @@
-console.log("Script loaded from:", window.location.pathname);
-
 // ================= LOTTIE HAMBURGER SETUP ====================
-const animation = lottie.loadAnimation({
-  container: document.getElementById('hamburgerAnim'),
-  renderer: 'svg',
-  loop: false,
-  autoplay: false,
-  path: 'assets/animations/hamburger.json'
-});
+const hamburgerAnimContainer = document.getElementById('hamburgerAnim');
+let animation;
 
-animation.setSpeed(3);
+if (hamburgerAnimContainer) {
+  animation = lottie.loadAnimation({
+    container: hamburgerAnimContainer,
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: 'assets/animations/hamburger.json'
+  });
 
-let isMenuOpen = false; 
+  animation.setSpeed(3);
+}
+
+let isMenuOpen = false;
 
 const hamburger = document.getElementById('hamburgerLottie');
 const navMenu = document.querySelector('.nav-menu');
 const body = document.body;
 
+// ==================== TOGGLE MENU ====================
 function toggleMenu() {
   isMenuOpen = !isMenuOpen;
   animation.setDirection(isMenuOpen ? 1 : -1);
   animation.play();
+
   navMenu.classList.toggle('active', isMenuOpen);
   body.classList.toggle('no-scroll', isMenuOpen);
 }
 
+// ==================== CLOSE MENU FUNCTION ====================
 function closeMenu() {
   if (!isMenuOpen) return;
   isMenuOpen = false;
   animation.setDirection(-1);
   animation.play();
+
   navMenu.classList.remove('active');
   body.classList.remove('no-scroll');
 }
 
-if (hamburger) {
+// ==================== EVENT LISTENERS ====================
+if (hamburger && animation) {
   hamburger.addEventListener('click', (e) => {
     e.stopPropagation();
     toggleMenu();
@@ -63,7 +71,6 @@ if (navMenu) {
 
 // ==================== SCROLL TO TOP BUTTON ====================
 const scrollBtn = document.getElementById('scrollToTopBtn');
-
 if (scrollBtn) {
   window.addEventListener('scroll', () => {
     scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
@@ -81,16 +88,12 @@ const btnRight = document.querySelectorAll('.carousel-btn.right');
 
 if (carousel && btnLeft.length && btnRight.length) {
   const scrollAmount = carousel.offsetWidth * 0.42 + 32;
-  btnLeft.forEach(btn =>
-    btn.addEventListener('click', () => {
-      carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    })
-  );
-  btnRight.forEach(btn =>
-    btn.addEventListener('click', () => {
-      carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    })
-  );
+  btnLeft.forEach(btn => btn.addEventListener('click', () => {
+    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  }));
+  btnRight.forEach(btn => btn.addEventListener('click', () => {
+    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  }));
 }
 
 // ==================== FAQ ACCORDION TOGGLE ====================
@@ -105,11 +108,11 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function updateCartCountDisplay() {
-  const cartCountEl = document.getElementById("cart-count");
-  if (!cartCountEl) return;
-  cartCountEl.textContent = cart.length;
-  cartCountEl.classList.add("cart-bounce");
-  setTimeout(() => cartCountEl.classList.remove("cart-bounce"), 300);
+  document.querySelectorAll(".cart-count").forEach((el) => {
+    el.textContent = cart.length;
+    el.classList.add("cart-bounce");
+    setTimeout(() => el.classList.remove("cart-bounce"), 300);
+  });
 }
 
 function addToCart(product) {
@@ -125,20 +128,16 @@ function renderCartPage() {
 
   if (!cartItemsContainer || !cartSummary || !cartEmptyMsg) return;
 
-  // Always clear previous content
-  cartItemsContainer.innerHTML = '';
-  cartSummary.innerHTML = '';
-
   if (cart.length === 0) {
     cartEmptyMsg.style.display = "block";
-    cartItemsContainer.style.display = "none";
     cartSummary.style.display = "none";
+    cartItemsContainer.innerHTML = "";
     return;
   }
 
   cartEmptyMsg.style.display = "none";
-  cartItemsContainer.style.display = "flex";
   cartSummary.style.display = "block";
+  cartItemsContainer.innerHTML = "";
 
   let total = 0;
 
@@ -163,21 +162,20 @@ function renderCartPage() {
     <button class="clear-cart-btn" id="clear-cart-btn">Clear Cart</button>
   `;
 
-  // Re-hook event listeners
   document.querySelectorAll(".remove-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const index = parseInt(btn.dataset.index);
       cart.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(cart));
-      renderCartPage(); // This will now correctly reset the UI
+      renderCartPage();
       updateCartCountDisplay();
     });
   });
 
   const clearBtn = document.getElementById("clear-cart-btn");
   clearBtn.addEventListener("click", () => {
+    localStorage.removeItem("cart");
     cart = [];
-    localStorage.setItem("cart", JSON.stringify(cart));
     renderCartPage();
     updateCartCountDisplay();
   });
@@ -186,16 +184,25 @@ function renderCartPage() {
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCountDisplay();
 
-  document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const product = {
-        name: btn.dataset.name,
-        price: btn.dataset.price,
-        image: btn.dataset.image,
-      };
-      addToCart(product);
+  // Add to Cart Buttons (on index.html only)
+  const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+  if (addToCartButtons.length > 0) {
+    addToCartButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const product = {
+          name: btn.dataset.name,
+          price: btn.dataset.price,
+          image: btn.dataset.image,
+        };
+        addToCart(product);
+      });
     });
-  });
+  }
 
-  renderCartPage();
+  // Run renderCartPage() only if on cart.html
+  const isCartPage = window.location.pathname.includes("cart.html");
+  if (isCartPage) {
+    // Wait a tick to ensure all elements exist
+    setTimeout(renderCartPage, 0);
+  }
 });
