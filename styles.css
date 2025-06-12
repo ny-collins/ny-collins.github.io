@@ -1706,7 +1706,7 @@ body {
   }
 
   .cart-item {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     gap: 0.8rem;
   }
