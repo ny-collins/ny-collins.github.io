@@ -123,19 +123,25 @@ function renderCartPage() {
   const cartEmptyMsg = document.getElementById("cart-empty");
   const cartSummary = document.getElementById("cart-summary");
 
-  if (!cartItemsContainer || !cartEmptyMsg || !cartSummary) return;
+  if (!cartItemsContainer || !cartSummary || !cartEmptyMsg) return;
+
+  // Always clear previous content
+  cartItemsContainer.innerHTML = '';
+  cartSummary.innerHTML = '';
 
   if (cart.length === 0) {
     cartEmptyMsg.style.display = "block";
+    cartItemsContainer.style.display = "none";
     cartSummary.style.display = "none";
     return;
   }
 
   cartEmptyMsg.style.display = "none";
+  cartItemsContainer.style.display = "flex";
   cartSummary.style.display = "block";
-  cartItemsContainer.innerHTML = "";
 
   let total = 0;
+
   cart.forEach((item, index) => {
     const priceNumber = parseInt(item.price.replace(/[^\d]/g, ""));
     total += priceNumber;
@@ -157,28 +163,23 @@ function renderCartPage() {
     <button class="clear-cart-btn" id="clear-cart-btn">Clear Cart</button>
   `;
 
+  // Re-hook event listeners
   document.querySelectorAll(".remove-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const index = parseInt(btn.dataset.index);
       cart.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(cart));
-      renderCartPage();
+      renderCartPage(); // This will now correctly reset the UI
       updateCartCountDisplay();
     });
   });
 
-  document.getElementById("clear-cart-btn").addEventListener("click", () => {
-  // Step 1: Clear memory + storage
-  localStorage.removeItem("cart");
-  cart = [];
-
-  // Step 2: Clear DOM containers manually
-  document.getElementById("cart-items").innerHTML = "";
-  document.getElementById("cart-summary").innerHTML = "";
-
-  // Step 3: Re-render clean state
-  renderCartPage();
-  updateCartCountDisplay();
+  const clearBtn = document.getElementById("clear-cart-btn");
+  clearBtn.addEventListener("click", () => {
+    cart = [];
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCartPage();
+    updateCartCountDisplay();
   });
 }
 
