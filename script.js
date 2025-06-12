@@ -1,3 +1,4 @@
+console.log("Script loaded from:", window.location.pathname);
 // ================= LOTTIE HAMBURGER SETUP ====================
 const animation = lottie.loadAnimation({
   container: document.getElementById('hamburgerAnim'),
@@ -111,7 +112,15 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 // ===================== CART SYSTEM =========================
 
 // Retrieve cart or initialize empty
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = [];
+try {
+  const stored = localStorage.getItem("cart");
+  if (stored) cart = JSON.parse(stored);
+} catch (e) {
+  console.error("Corrupted cart in localStorage:", e);
+  localStorage.removeItem("cart");
+  cart = [];
+}
 
 // -------------------- Update Cart Count on Navbar --------------------
 function updateCartCountDisplay() {
