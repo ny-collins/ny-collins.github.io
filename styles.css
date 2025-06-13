@@ -92,7 +92,6 @@ body {
   position: relative;
 }
 
-/* Mobile Nav Menu */
 .nav-menu {
   display: flex;
   flex-direction: column;
@@ -531,9 +530,20 @@ body {
   }
 }
 
+/* ==================== TESTIMONIALS SECTION ==================== */
 .testimonials {
   padding: 4rem 2rem;
   background-color: #f2f4f7;
+}
+
+.section-label {
+  color: #ff6b6b;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
 }
 
 .testimonial-layout {
@@ -573,6 +583,7 @@ body {
   overflow: hidden;
   max-width: 820px;
   margin-top: 0.5rem;
+  border-radius: 20px;
 }
 
 .testimonial-carousel {
@@ -584,6 +595,7 @@ body {
   scrollbar-width: none;
   margin-top: 0;
   margin-bottom: 0.5rem;
+  border-radius: 20px;
 }
 
 .testimonial-carousel::-webkit-scrollbar {
@@ -662,34 +674,30 @@ body {
   background-color: #e05858;
 }
 
-.carousel-viewport::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 100%;
-  background: linear-gradient(to right, white 60%, transparent);
-  z-index: 1;
-  pointer-events: none;
-}
-
 /* Responsive Button Handling */
 .mobile-only {
   display: none;
 }
 
 @media (max-width: 900px) {
+  .testimonials {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   .testimonial-layout {
     flex-direction: column;
-    gap: 0;
-    padding: 2rem 1.5rem;
+    gap: 2rem;
+    padding: 3rem 1rem 2rem 1rem;
   }
 
   .testimonial-aside {
-    max-width: 100%;
     text-align: center;
-    margin-bottom: 0.2rem;
+    padding: 0 1rem;
   }
   
     .testimonial-aside p {
@@ -698,18 +706,35 @@ body {
 
   .carousel-viewport {
     padding: 0;
-    margin-top: 0.2rem;
-    margin-bottom: 0;
-    max-width: 100%;
+    overflow-x: auto;
+    width: 100%;
+    scroll-snap-type: x mandatory;
   }
 
   .testimonial-carousel {
-    margin-bottom: 0.5rem;
+    gap: 1rem;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
   }
 
   .testimonial-card {
-    min-width: 70%;
-    max-width: 70%;
+    min-width: 100%;
+    max-width: 100%;
+    scroll-snap-align: center;
+    border-radius: 20px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+    min-height: 280px;
+  }
+
+  .testimonial-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .testimonial-author {
+    flex-direction: row;
+    gap: 1rem;
   }
 
   .testimonial-aside .testimonial-nav-buttons {
@@ -719,10 +744,50 @@ body {
   .testimonial-nav-buttons.mobile-only {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  .testimonial-nav-buttons.mobile-only .carousel-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.testimonial-nav-buttons.mobile-only .carousel-btn:hover {
+  background-color: #e05858;
+  transform: translateY(-2px);
+}
+}
+
+@media (max-width: 768px) {
+  .testimonial-layout,
+  .contact-wrapper {
+    border-radius: 20px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .section-label {
+    text-align: left;
+    margin-bottom: 1rem;
   }
 }
+
 
 /* ================ TRUSTED LOGOS SECTION ==================== */
 .trusted-logos {
@@ -753,14 +818,12 @@ body {
   z-index: 2;
 }
 
-/* Viewport that holds the track */
 .logo-viewport {
   position: relative;
   flex: 1;
   overflow: hidden;
 }
 
-/* Fade effect applied to this static wrapper */
 .logo-viewport::before {
   content: '';
   position: absolute;
@@ -773,7 +836,6 @@ body {
   pointer-events: none;
 }
 
-/* Right fade if needed */
 .logo-viewport::after {
   content: '';
   position: absolute;
@@ -786,7 +848,6 @@ body {
   pointer-events: none;
 }
 
-/* Scrolling track inside viewport */
 .logo-track {
   display: flex;
   align-items: center;
@@ -961,72 +1022,120 @@ body {
   }
 }
 
-/* ==================== COMMUNITY SECTION ==================== */
-.community {
-  padding: 4rem 2rem;
+/* ===================== COMMUNITY SECTION ===================== */
+.community-section {
   background-color: #f2f4f7;
+  padding: 5rem 2rem;
 }
 
 .community-wrapper {
-  background-color: white;
-  border-radius: 25px;
-  padding: 3rem 2rem;
-  max-width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+  max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
 }
 
-.community-wrapper h2 {
-  font-size: 2rem;
+.community-text {
+  flex: 1 1 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.community-text .section-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ff6b6b;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.community-text h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
   color: #1e2a38;
+  line-height: 1.2;
   margin-bottom: 1rem;
 }
 
-.community-wrapper p {
+.community-text p {
   font-size: 1.1rem;
   color: #555;
   margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
 .btn-discord {
-  background-color: #5865F2;
-  color: white;
-  padding: 0.8rem 1.8rem;
-  border: none;
+  background-color: #5865f2; /* Discord brand color */
+  color: #ffffff;
+  padding: 0.8rem 1.5rem;
   border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
   display: inline-block;
-  margin-bottom: 2rem;
+  transition: background-color 0.3s ease;
 }
 
 .btn-discord:hover {
-  background-color: #4752c4;
+  background-color: #4e5bd4;
 }
 
-.social-icons {
+.community-image {
+  flex: 1 1 500px;
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  align-items: center;
 }
 
-.social-icons a img {
-  width: 28px;
-  height: 28px;
-  transition: transform 0.3s ease;
+.community-image img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 32px;
+  object-fit: cover;
 }
 
-.social-icons a:hover img {
-  transform: scale(1.2);
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .community-wrapper {
+    flex-direction: column;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .community-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .community-text p {
+    font-size: 1rem;
+  }
+
+  .community-image img {
+    width: 90vw;
+    max-width: 500px;
+    border-radius: 24px;
+    margin-bottom: 1rem;
+  }
+
+  .btn-discord {
+    font-size: 1rem;
+    padding: 0.7rem 1.3rem;
+  }
+
+  .community-text,
+  .community-image {
+    flex: none !important;
+  }
 }
 
 /* ==================== FAQ SECTION ==================== */
 .faq {
   padding: 4rem 2rem;
-  background-color: transparent; /* Uses body background */
+  background-color: transparent;
 }
 
 .faq-container {
@@ -1130,7 +1239,7 @@ body {
 }
 
 .faq-item.active .faq-answer {
-  max-height: 500px; /* Enough to show answer */
+  max-height: 500px;
 }
 
 /* ==================== Responsive ==================== */
@@ -1259,7 +1368,6 @@ body {
   outline: none;
 }
 
-/* More margin for message field */
 .contact-form-wrapper .message-field {
   margin-bottom: 2.2rem;
 }
@@ -1297,7 +1405,6 @@ body {
 #message {margin-top: 1.8rem;}
 #email {margin-top: 0.1rem;}
 
-/* Contact section social icons (reusing styles from community section) */
 .contact-details .contact-socials {
   margin-top: 0.75rem;
 }
@@ -1324,9 +1431,7 @@ body {
 
   .contact-details,
   .contact-form-wrapper {
-    width: 100%;
     flex: none;
-    min-width: 0;
   }
 
   .contact-details p,

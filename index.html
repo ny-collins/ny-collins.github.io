@@ -287,9 +287,9 @@
 <section class="testimonials" id="reviews">
   <div class="container">
     <div class="testimonial-layout">
-      
       <!-- Fixed left panel -->
       <div class="testimonial-aside">
+        <h3 class="section-label">CUSTOMER REVIEWS</h3>
         <h2>What Our Customers Say</h2>
         <p>Trusted by tech lovers across the country. Scroll through some of their kind words.</p>
 
@@ -421,19 +421,17 @@
 </section>
 
 <!-- ==================== COMMUNITY SECTION ================= -->
-<section class="community">
-  <div class="community-wrapper container">
-    <h2>Join the TechHaven Community</h2>
-    <p>Stay ahead of tech trends, get support, and vibe with fellow gadget lovers.</p>
-
-    <a href="https://discord.com" class="btn btn-discord" target="_blank">Join our Discord</a>
-
-    <!-- <div class="social-icons">
-      <a href="https://x.com" title="X" target="_blank"><img src="assets/icons/x.png" alt="X logo"></a>
-      <a href="https://youtube.com" title="YouTube" target="_blank"><img src="assets/icons/youtube.png" alt="YouTube logo"></a>
-      <a href="https://instagram.com" title="Instagram" target="_blank"><img src="assets/icons/instagram.png" alt="Instagram logo"></a>
-      <a href="https://web.telegram.org" title="Telegram" target="_blank"><img src="assets/icons/telegram.png" alt="Telegram logo"></a>
-    </div> -->
+<section class="community-section">
+  <div class="container community-wrapper">
+    <div class="community-text">
+      <span class="section-label">Community</span>
+      <h2>Join the TechHaven Community</h2>
+      <p>Stay ahead of tech trends, get support, and vibe with fellow gadget lovers.</p>
+      <a href="https://discord.com" class="btn btn-discord" target="_blank">Join our Discord</a>
+    </div>
+    <div class="community-image">
+      <img src="assets/images/community-image.png" alt="TechHaven community illustration">
+    </div>
   </div>
 </section>
 
@@ -520,17 +518,22 @@
 
       <div class="contact-form-wrapper">
         <h3>Send Us a Message</h3>
-        <form id="contact-form">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="off" />
-          </div>
-          <div class="form-group message-field">
-            <label for="message">Message</label>
-            <input type="text" id="message" name="message" placeholder="Message goes here..." required autocomplete="off" />
-          </div>
-          <button type="submit" class="btn-primary">Send Message</button>
-        </form>
+        <form
+  id="contact-form"
+  action="https://formspree.io/f/xldbyzyn"
+  method="POST"
+>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="off"/>
+  </div>
+  <div class="form-group message-field">
+    <label for="message">Message</label>
+    <input type="text" id="message" name="message" placeholder="Message goes here..." required autocomplete="off" />
+  </div>
+  <button type="submit" class="btn-primary">Send Message</button>
+</form>
+
         <div class="form-message"></div>
       </div>
     </div>
