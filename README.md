@@ -1,105 +1,127 @@
-
 # TechHaven - Responsive Gadget Store
 
-## 🌐 Live Demo
+## 🌐 Live Demo  
 [View Site on GitHub Pages](https://ny-collins.github.io/)
 
 ---
 
 ## 🧩 Project Overview
 
-TechHaven is a fully responsive, gadget-themed website built from scratch using HTML, CSS, and JavaScript. It reimagines the structure of the Solus mental wellbeing template but adapts it into a tech-centric experience focused on visual clarity, interactivity, and mobile-first performance.
+**TechHaven** is a fully responsive gadget retail website crafted from scratch using **HTML**, **CSS**, and **vanilla JavaScript**. Inspired by the layout of the Solus mental wellness template, TechHaven adapts that aesthetic to a modern e-commerce experience. It emphasizes clean structure, smooth interactivity, responsive layouts, and a polished user interface optimized for both mobile and desktop users.
 
 ---
 
 ## 🎨 Color System
 
-This site uses a custom color palette to communicate trust, innovation, and excitement:
+The site uses a custom WCAG AA-compliant palette tailored for clarity, trust, and excitement:
 
-| Role        | Color       | HEX      | Rationale |
-|-------------|-------------|----------|-----------|
-| Primary     | Coral Red   | `#ff6b6b` | Draws attention to CTAs, e.g., buttons and icons |
-| Secondary   | Navy Blue   | `#1e2a38` | Conveys trust, stability, and tech focus |
-| Accent      | Soft Blue   | `#4a90e2` | Adds vibrant highlights without overwhelming the visual hierarchy |
-| Background  | Soft Gray   | `#f2f4f7` | Gentle contrast that supports readability |
-
-All text/background and button contrasts pass WCAG AA checks for legibility and accessibility.
+| Role        | Color Name  | HEX       | Purpose |
+|-------------|-------------|-----------|---------|
+| Primary     | Coral Red   | `#ff6b6b` | Highlights CTA buttons and icons |
+| Secondary   | Navy Blue   | `#1e2a38` | Used for headers, nav, and structural contrast |
+| Accent      | Soft Blue   | `#4a90e2` | Adds vibrance and link highlights |
+| Background  | Soft Gray   | `#f2f4f7` | Keeps content easy to read |
 
 ---
 
-## 📱 Breakpoint Logic
+## 📱 Responsive Breakpoints
 
-The site implements a **mobile-first** approach with three main breakpoints:
+TechHaven uses a **mobile-first design** strategy with the following breakpoints:
 
-- **SM (<768px)**: 
-  - Navbar becomes a Lottie-animated hamburger menu
-  - Stacked layouts for testimonials, product grid, and support cards
-  - Reduced padding for compact vertical flow
+- **Small (0–767px)**:
+  - Stacked layout for all sections
+  - Mobile nav with Lottie hamburger animation
+  - Carousel and contact form fully responsive
+  - Optimized spacing for narrow viewports
 
-- **MD (768–1024px)**:
-  - Grid elements appear in 2-column layout
-  - Carousel buttons are repositioned for usability
-  - Spacing and font sizes scale moderately
+- **Medium (768–1023px)**:
+  - 2-column layout for product grid and testimonial content
+  - Carousel buttons repositioned for middle-sized screens
+  - Consistent spacing and font scale adjustments
 
-- **LG (>1024px)**:
-  - Precise layout alignment with Solus mockup's card sizes and spacing
-  - Testimonials, footer, and product grids retain horizontal flex/grid layouts
-  - All enhancements and color stylings deviate from the original mockup per assignment
+- **Large (1024px and above)**:
+  - 3-column product grid and horizontal testimonial layout
+  - Footer and FAQ sections aligned with full-width constraints
+  - Layout matches Solus spacing conventions with TechHaven visuals
 
 ---
 
 ## 🚀 Key Features
 
-- **Fully Responsive Design** using CSS Flexbox and media queries
-- **Custom Animated Hamburger Menu** with Lottie integration
-- **Testimonial Carousel** with smooth horizontal scrolling and subtle fade effect
-- **Stylized Contact Form** with floating placeholder UX and accessibility-friendly inputs
-- **Dynamic FAQ Section** with expandable dropdowns
-- **Trusted Logos Marquee** with seamless infinite scroll
-- **Product Cards** with hover effects, external links, and price highlights
-- **Scroll-to-Top Button** for improved navigation UX
-- **Consistent Layout Grid** constrained to max-widths on large screens
-- **Semantic HTML** and ARIA labels for accessibility
+- ✅ **Fully Responsive Layout** using CSS Flexbox and media queries  
+- ✅ **Animated Lottie Hamburger Menu** (slide-in mobile nav)  
+- ✅ **Internal Product Detail Pages** for each gadget  
+- ✅ **Shopping Cart System** with persistent state via `localStorage`  
+- ✅ **Dynamic Cart Page** rendering items stored in localStorage  
+- ✅ **Stylized Product Cards** with hover effects and pricing  
+- ✅ **Testimonial Carousel** with left-text/right-carousel layout and fade effect  
+- ✅ **Accessible Contact Form** with floating labels and input focus transitions  
+- ✅ **FAQ Section** with toggleable answers  
+- ✅ **Scroll-to-Top Button**  
+- ✅ **Trusted Partners Logo Marquee** with seamless scroll  
+- ✅ **How It Works Section** with custom illustration and CTA  
+- ✅ **Clean Grid System** using consistent `max-width` containers  
+- ✅ **Semantic HTML5** structure with ARIA roles and labels  
+- ✅ **WCAG AA Color Contrast Compliance**
 
 ---
 
-## 🧠 Creative Divergence from Mockup
+## 🛒 Shopping Cart Details
 
-While preserving the card structure and layout spacing at large breakpoints, TechHaven takes several creative liberties:
-
-- Rebranded from Solus (mental wellness) to TechHaven (gadget retail)
-- Introduced an ecommerce-style product grid with real device images
-- Changed testimonials content and layout to simulate authentic customer reviews
-- Added interactive features like Lottie hamburger menu and animated scroll effects
-- Designed new "How it Works" section tailored to online tech shopping
+- Products can be added to cart from detail pages  
+- Cart contents are stored in `localStorage` for persistence  
+- The `cart.html` page dynamically displays items, quantities, and totals  
+- Item removal and cart-clearing functionality included (via buttons)  
+- Consistent theming and layout across all pages
 
 ---
 
-## 🧪 Tools Used
+## 🧠 Creative Divergences from Solus Template
 
-- HTML5, CSS3, JavaScript
-- Lottie for animated SVG hamburger
-- FontAwesome for social icons
-- Coolors & WebAIM for color contrast validation
-- GitHub Pages for hosting
+TechHaven creatively adapts the original Solus layout by:
+
+- Rebranding the theme from mental wellness to consumer electronics  
+- Building an internal product page system rather than using external links  
+- Adding a persistent cart system and simulated e-commerce logic  
+- Modifying the testimonial layout with carousel-like behavior  
+- Redesigning the "How It Works" section for a tech buying journey  
+- Using TechHaven-specific icons, assets, and color palette
+
+---
+
+## 🧪 Tools & Resources Used
+
+- **Languages**: HTML5, CSS3, JavaScript (no frameworks)  
+- **Animation**: Lottie (JSON hamburger icon)  
+- **Icons**: FontAwesome  
+- **Accessibility**: WebAIM & Coolors for contrast validation  
+- **Hosting**: GitHub Pages  
+- **Assets**: Custom images under `/assets/images` and Lottie JSON in `/assets/icons`
 
 ---
 
 ## 📝 How to Run Locally
 
-1. Clone this repo:
-```bash
-git clone https://github.com/ny-collins/ny-collins.github.io.git
-```
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/ny-collins/ny-collins.github.io.git
+   ```
 
-2. Open `index.html` in your browser.
+2. Navigate to the project folder and open `index.html` in your browser.
 
-3. Note, The Lottie animation of the hamburger menu icon is not going to be displayed due to violation of CORS policy. To evade this, use live-server instead of running a static file (index.html) directly via your browser.
+3. **Important Note**:  
+   The animated hamburger menu may not load due to **CORS policy** when opening files locally. Use a live server (e.g. VS Code's Live Server extension) to preview correctly.
+   This bash installation is for linux users or those who do not use VS Code extension
+   ```bash
+   npm install -g live-server
+   live-server
+   ```
 
 ---
 
 ## 🧾 License
 
-This project is for educational and non-commercial use. Icons, images, and Lottie files used fall under respective licensing from their original sources.
+This project is for **educational and non-commercial** use only.  
+All icons, images, and animations used are credited to their original sources and follow usage terms where applicable.
 
 ---
