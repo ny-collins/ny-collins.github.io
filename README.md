@@ -1,3 +1,10 @@
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<div align="left">
+	<img src="https://github.com/K1rsN7/TechHaven/blob/master/img/logo.webp"></div>
+	<br>
+
 # TechHaven - Responsive Gadget Store
 
 ## 🌐 Live Demo  
