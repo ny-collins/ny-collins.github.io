@@ -248,7 +248,7 @@ img {
 /* HERO SECTION          */
 /* ===================== */
 .hero {
-  background: url('../images/hero-bg.jpg') no-repeat center center/cover;
+  background: url('../images/hero-bg.png') no-repeat center center/cover;
   color: #fff;
   padding: 6rem 0;
   text-align: center;

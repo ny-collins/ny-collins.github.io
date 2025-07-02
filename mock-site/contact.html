@@ -1,143 +1,157 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us | Swiftel Fibre</title>
-  <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/styles.css">
+
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/styles.css"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <script src="https://unpkg.com/lottie-web@latest/build/player/lottie.min.js"></script>
 </head>
 <body>
-  <header class="navbar">
+
+  <nav class="navbar">
     <div class="container">
       <a href="index.html" class="logo-block">
-        <img src="images/logo.png" alt="Swiftel Logo">
+        <img src="images/logo.png" alt="Swiftel Logo" />
         <div class="logo-text">
           <h1>SWIFTEL FIBRE</h1>
-          <p>Empowering Internet Generation</p>
+          <p>Reliable. Affordable. Everywhere.</p>
         </div>
       </a>
-      <div id="hamburger" class="hamburger"></div>
-      <nav class="nav-menu">
+      <div class="hamburger" id="hamburger"></div>
+      <div class="nav-menu">
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="business-solutions.html">Business Solutions</a></li> <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
-      </nav>
+      </div>
     </div>
-  </header>
+  </nav>
+
+  <section class="hero-small">
+    <div class="container">
+      <h2 data-aos="fade-up">Get in Touch</h2>
+      <p data-aos="fade-up" data-aos-delay="100">We'd love to hear from you! Reach out with any questions or inquiries.</p>
+    </div>
+  </section>
 
   <section class="contact-section">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-down">Get in Touch with Swiftel Fibre</h2>
-      <p class="section-description" data-aos="fade-up" data-aos-delay="100">
-        We'd love to hear from you! Whether you have a question about our services, need support, or want to discuss a partnership, our team is ready to assist.
-      </p>
+      <h2 class="section-title" data-aos="fade-up">Reach Out to Swiftel Fibre</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Our team is ready to assist you. Fill out the form or use the contact details below.</p>
 
       <div class="contact-grid">
-        <div class="contact-info" data-aos="fade-right">
-          <h3>Our Contact Details</h3>
-          <div class="info-item">
+        <div class="contact-info" data-aos="fade-right" data-aos-delay="200">
+          <h3>Contact Information</h3>
+          <div class="contact-item">
             <i class="fas fa-phone-alt"></i>
-            <p><strong>Phone:</strong> <a href="tel:+254111250055">+254 111250055</a></p>
+            <p>+254 111250055</p>
           </div>
-          <div class="info-item">
+          <div class="contact-item">
             <i class="fas fa-envelope"></i>
-            <p><strong>Email:</strong> <a href="mailto:swiftytelk@gmail.com">swiftytelk@gmail.com</a></p>
+            <p>swiftytelk@gmail.com</p>
           </div>
-          <div class="info-item">
+          <div class="contact-item">
             <i class="fas fa-map-marker-alt"></i>
-            <p><strong>Location:</strong> Kasarani & Njiru Sub-Counties, Nairobi, Kenya</p>
+            <p>Nairobi, Kenya</p>
           </div>
-
-          <div class="social-links-contact">
-            <h3>Follow Us</h3>
-            <a href="https://facebook.com/Geoffreynganga.co.ke" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://tiktok.com/@swiftel.fibre" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-            <a href="https://instagram.com/swiftel.fibre" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/254111250055" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-          </div>
-
-          <div class="map-placeholder" data-aos="fade-up">
-            <h3>Our Coverage Area</h3>
-            <img src="images/map-placeholder.png" alt="Map of Kasarani and Njiru Sub-Counties">
-            <p class="map-note">Currently serving Kasarani and Njiru sub-counties.</p>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
           </div>
         </div>
 
-        <div class="contact-form" data-aos="fade-left">
+        <div class="contact-form" data-aos="fade-left" data-aos-delay="300">
           <h3>Send Us a Message</h3>
           <form action="#" method="POST">
             <div class="form-group">
               <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" required>
+              <input type="text" id="name" name="name" placeholder="Enter your name" required>
             </div>
             <div class="form-group">
               <label for="email">Your Email</label>
-              <input type="email" id="email" name="email" required>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
             <div class="form-group">
               <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject">
+              <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
             </div>
             <div class="form-group">
               <label for="message">Your Message</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
+              <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Send Message</button>
           </form>
         </div>
       </div>
+
+      <div class="map-container" data-aos="fade-up" data-aos-delay="400">
+        <h2 class="section-title" style="margin-bottom: 2rem;">Find Us on the Map</h2>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.828854081685!2d36.81229041475399!3d-1.2755259990861502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10b7f8f8b8f7%3A0x6b8d2c2d9e6e8e8e!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2ske!4v1678888888888!5m2!1sen!2ske"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
     </div>
   </section>
 
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <img src="images/SwiftelLogo.png" alt="Swiftel Logo" class="footer-logo" />
-        <p>Empowering Internet Generation across Nairobi – one connection at a time.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4>Contact Us</h4>
-        <p><i class="fas fa-phone-alt"></i> +254 111250055</p>
-        <p><i class="fas fa-envelope"></i> swiftytelk@gmail.com</p>
-        <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
-      </div>
-      <div class="footer-social">
-        <h4>Follow Us</h4>
-        <div class="social-icons">
-          <a href="https://facebook.com/Geoffreynganga.co.ke" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://tiktok.com/@swiftel.fibre" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-          <a href="https://instagram.com/swiftel.fibre" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/254111250055" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="Swiftel Logo" class="footer-logo">
+          <h2>SWIFTEL FIBRE</h2>
+          <p>Reliable, fast, and affordable internet solutions tailored for every Kenyan household and business.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="business-solutions.html">Business Solutions</a></li> <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <p><i class="fas fa-phone-alt"></i> +254 111250055</p>
+          <p><i class="fas fa-envelope"></i> swiftytelk@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+        </div>
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="https://facebook.com/Geoffreynganga.co.ke" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://tiktok.com/@swiftel.fibre" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://instagram.com/swiftel.fibre" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/254111250055" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Swiftel Fibre. All rights reserved.</p>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Swiftel Fibre. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
-  <a href="https://wa.me/254111250055" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">
+  <a href="https://wa.me/254111250055" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="js/main.js"></script>
+
 </body>
 </html>
