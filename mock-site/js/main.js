@@ -16,7 +16,7 @@ const animation = lottie.loadAnimation({
   path: "icons/hamburger.json"
 });
 
-animation.setSpeed(2.5);
+animation.setSpeed(3);
 
 let menuOpen = false;
 
@@ -28,6 +28,8 @@ function toggleMenu(forceClose = false) {
 
   navMenu.classList.toggle("active", menuOpen);
   document.body.style.overflow = menuOpen ? "hidden" : "auto";
+
+  hamburger.classList.toggle("is-active-overlay", menuOpen);
 }
 
 // Click hamburger icon
