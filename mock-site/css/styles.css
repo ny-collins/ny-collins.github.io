@@ -1708,3 +1708,79 @@ img {
         max-width: 300px;
     }
 }
+
+/* Business Packages List within service-content-block */
+.business-package-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Allow two columns on wider screens, one on narrow */
+  gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem; /* Add some space below the list */
+}
+
+.business-package-item {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: left; /* Align text within the card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Push button to bottom */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.business-package-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.business-package-item h5 {
+  font-family: 'PoppinsSemiBold', sans-serif;
+  font-size: 1.5rem;
+  color: #002e47;
+  margin-bottom: 0.8rem;
+}
+
+.business-package-item .package-speed-price {
+  font-family: 'PoppinsBold', sans-serif;
+  font-size: 1.2rem;
+  color: #3b82f6; /* Accent blue */
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed #eee; /* Subtle separator */
+  padding-bottom: 0.8rem;
+}
+
+.business-package-item ul {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Allow list to take available space */
+}
+
+.business-package-item ul li {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: flex-start; /* Align icon to top of text */
+  gap: 0.6rem;
+}
+
+.business-package-item ul li i {
+  color: #25d366; /* Green checkmark */
+  font-size: 1rem;
+  margin-top: 0.1rem; /* Fine-tune vertical alignment */
+}
+
+.business-package-item .btn {
+  width: 100%; /* Make button full width of card */
+  margin-top: auto; /* Push button to the bottom */
+}
+
+@media (max-width: 768px) {
+  .business-package-list {
+    grid-template-columns: 1fr; /* Stack on smaller screens */
+  }
+}
