@@ -1709,13 +1709,19 @@ img {
     }
 }
 
-/* Business Packages List within service-content-block */
+/* New Section for Business Packages */
+.business-packages-section {
+    padding: 5rem 0;
+    background-color: #fcfcfc;
+    text-align: center;
+}
+
 .business-package-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Allow two columns on wider screens, one on narrow */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
-  margin-bottom: 2rem; /* Add some space below the list */
+  margin-bottom: 2rem;
 }
 
 .business-package-item {
@@ -1724,10 +1730,10 @@ img {
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  text-align: left; /* Align text within the card */
+  text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Push button to bottom */
+  justify-content: space-between;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -1746,16 +1752,16 @@ img {
 .business-package-item .package-speed-price {
   font-family: 'PoppinsBold', sans-serif;
   font-size: 1.2rem;
-  color: #3b82f6; /* Accent blue */
+  color: #3b82f6;
   margin-bottom: 1rem;
-  border-bottom: 1px dashed #eee; /* Subtle separator */
+  border-bottom: 1px dashed #eee;
   padding-bottom: 0.8rem;
 }
 
 .business-package-item ul {
   list-style: none;
   margin-bottom: 1.5rem;
-  flex-grow: 1; /* Allow list to take available space */
+  flex-grow: 1;
 }
 
 .business-package-item ul li {
@@ -1764,23 +1770,23 @@ img {
   color: #444;
   margin-bottom: 0.6rem;
   display: flex;
-  align-items: flex-start; /* Align icon to top of text */
+  align-items: flex-start;
   gap: 0.6rem;
 }
 
 .business-package-item ul li i {
-  color: #25d366; /* Green checkmark */
+  color: #25d366;
   font-size: 1rem;
-  margin-top: 0.1rem; /* Fine-tune vertical alignment */
+  margin-top: 0.1rem;
 }
 
 .business-package-item .btn {
-  width: 100%; /* Make button full width of card */
-  margin-top: auto; /* Push button to the bottom */
+  width: 100%;
+  margin-top: auto;
 }
 
 @media (max-width: 768px) {
   .business-package-list {
-    grid-template-columns: 1fr; /* Stack on smaller screens */
+    grid-template-columns: 1fr;
   }
 }
