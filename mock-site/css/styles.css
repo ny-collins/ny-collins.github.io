@@ -1504,3 +1504,207 @@ img {
     font-size: 1.2rem;
   }
 }
+
+/* --- Package Sections --- */
+.packages-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f8f8f8; /* Light background for package sections */
+}
+
+.packages-section h2 {
+    font-size: 2.5rem;
+    color: #0d1a2f; /* Dark blue from logo */
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.packages-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: #fcd34d; /* Yellow accent */
+    border-radius: 2px;
+}
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.package-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.package-card h3 {
+    font-size: 1.8rem;
+    color: #0d1a2f;
+    margin-bottom: 15px;
+}
+
+.package-card h4 {
+    font-size: 1.2rem;
+    color: #334155; /* Slightly lighter dark blue */
+    margin-bottom: 10px;
+}
+
+.package-card .price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fbbf24; /* Orange/Yellow from logo */
+    margin-bottom: 20px;
+}
+
+.package-card .price span {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #64748b;
+}
+
+.package-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Allows list to take available space */
+}
+
+.package-card ul li {
+    font-size: 1rem;
+    color: #4b5563;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.package-card ul li::before {
+    content: '✔'; /* Checkmark icon */
+    color: #10b981; /* Green */
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.package-card .btn-primary {
+    display: inline-block;
+    background-color: #fbbf24;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.package-card .btn-primary:hover {
+    background-color: #fcd34d;
+}
+
+/* Specific styles for business features if needed */
+.business-features {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* CTA buttons for sections */
+.section-cta {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.section-cta .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid #fbbf24;
+}
+
+.section-cta .btn-primary-cta {
+    background-color: #fbbf24;
+    color: #fff;
+}
+
+.section-cta .btn-primary-cta:hover {
+    background-color: #fcd34d;
+    border-color: #fcd34d;
+}
+
+.section-cta .btn-secondary-cta {
+    background-color: transparent;
+    color: #fbbf24;
+}
+
+.section-cta .btn-secondary-cta:hover {
+    background-color: #fbbf24;
+    color: #fff;
+}
+
+/* Responsive Adjustments for Packages */
+@media (max-width: 768px) {
+    .packages-section {
+        padding: 40px 15px;
+    }
+
+    .packages-section h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .packages-grid {
+        grid-template-columns: 1fr; /* Stack cards on mobile */
+        gap: 20px;
+    }
+
+    .package-card {
+        margin: 0 auto; /* Center cards */
+        max-width: 350px; /* Max width for mobile cards */
+        padding: 20px;
+    }
+
+    .package-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .package-card .price {
+        font-size: 2rem;
+    }
+
+    .section-cta {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    .section-cta .btn {
+        width: 90%; /* Make buttons wider on mobile */
+        max-width: 300px;
+    }
+}
