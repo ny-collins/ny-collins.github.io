@@ -1790,3 +1790,9 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
+/* New Section for Core Services */
+.core-services-section {
+    padding: 5rem 0;
+    background-color: #fcfcfc;
+}
