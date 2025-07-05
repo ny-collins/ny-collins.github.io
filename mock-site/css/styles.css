@@ -1870,103 +1870,118 @@ img {
 /* THEME TOGGLER STYLING */
 /* ===================== */
 
-.theme-toggler {
+.theme-toggle-container {
   position: relative;
-  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  /* Adjust margin if needed to align with navbar items */
+  margin-left: 1.5rem; /* Example: Add some space from other nav items */
 }
 
-/* Adjust size for all icons in the theme toggler */
-.theme-toggler i {
-  font-size: 1.8rem; /* Increased size */
-  transition: color 0.3s ease;
-}
-
-/* Basic styling for the theme toggle button */
+/* Style for the main theme toggle button */
 .theme-toggle-button {
-  background-color: var(--bg-card); /* Use a card background color */
-  border: 1px solid var(--border-color-medium); /* Add a subtle border */
-  border-radius: 8px; /* Rounded corners */
-  padding: 0.75rem 1rem; /* More padding */
+  background-color: var(--bg-card); /* Consistent with card backgrounds */
+  border: 1px solid var(--border-color-medium);
+  border-radius: 25px; /* More rounded, pill-like shape */
+  padding: 0.5rem 1.2rem; /* Adjusted padding */
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  box-shadow: var(--shadow-light); /* Add a light shadow */
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  gap: 0.6rem; /* Slightly more space between icon and text */
+  box-shadow: var(--shadow-light); /* Soft shadow */
+  transition: all 0.3s ease; /* Smooth transitions for all properties */
+  font-size: 0.95rem; /* Slightly larger text */
+  font-weight: 500;
+  color: var(--text-primary); /* Default text color */
+  min-width: 120px; /* Ensure a consistent width */
+  justify-content: center; /* Center content */
 }
 
 .theme-toggle-button:hover {
-  background-color: var(--bg-section-light); /* Slightly different background on hover */
-  border-color: var(--accent-yellow); /* Highlight border on hover */
+  background-color: var(--bg-section-light); /* Lighter background on hover */
+  border-color: var(--accent-yellow); /* Highlight border */
+  box-shadow: var(--shadow-medium); /* More pronounced shadow on hover */
+  transform: translateY(-2px); /* Slight lift effect */
 }
 
-/* Specific colors for icons wherever they appear in the theme toggler context */
-/* Sun icon for light theme */
-.theme-toggler .fa-sun,
-#theme-dropdown .theme-option .fa-sun {
-  color: var(--accent-yellow); /* Yellow for the sun */
+/* Icons within the main toggle button */
+.theme-toggle-button i {
+  font-size: 1.3rem; /* Adjusted icon size for the button */
+  line-height: 1; /* Align icon vertically */
+  transition: color 0.3s ease;
 }
 
-/* Moon icon for dark theme */
-.theme-toggler .fa-moon,
-#theme-dropdown .theme-option .fa-moon {
-  color: #a0aec0; /* A shade of gray for the moon */
+/* Specific colors for icons based on their Font Awesome class */
+.theme-toggle-button .fa-sun {
+  color: var(--accent-yellow); /* Yellow for sun */
 }
 
-/* Desktop icon for system theme */
-.theme-toggler .fa-desktop,
-#theme-dropdown .theme-option .fa-desktop {
-  color: var(--text-secondary); /* Use secondary text color, or pick another distinct color */
+.theme-toggle-button .fa-moon {
+  color: #a0aec0; /* Grey/silver for moon */
 }
 
-/* Ensure the hover effect still works for the main icon */
-.theme-toggler:hover i {
-  color: var(--accent-yellow); /* This will apply yellow on hover for any icon in the toggler */
+.theme-toggle-button .fa-desktop {
+  color: var(--text-secondary); /* A neutral color for desktop */
 }
 
 
+/* Styling for the dropdown menu */
 #theme-dropdown {
   position: absolute;
-  top: 120%;
+  top: calc(100% + 10px); /* Position below the button with a gap */
   right: 0;
   background-color: var(--bg-card);
   border: 1px solid var(--border-color-light);
   border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 4px 12px var(--shadow-medium);
-  z-index: 999;
-  min-width: 180px;
+  padding: 0.75rem; /* Slightly less padding */
+  box-shadow: 0 6px 20px var(--shadow-medium); /* Stronger shadow for dropdown */
+  z-index: 1000; /* Ensure it's on top */
+  min-width: 160px; /* Consistent width */
   opacity: 0;
-  transform: translateY(10px);
-  pointer-events: none;
+  transform: translateY(15px); /* Start slightly lower */
+  pointer-events: none; /* Do not block events when not active */
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 #theme-dropdown.active {
   opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+  transform: translateY(0); /* Slide up into view */
+  pointer-events: auto; /* Allow interaction when active */
 }
 
+/* Styling for individual theme options in the dropdown */
 .theme-option {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 1rem; /* Padding for options */
   cursor: pointer;
   color: var(--text-primary);
   border-radius: 6px;
   transition: background-color 0.2s ease, color 0.2s ease;
+  font-weight: 400; /* Normal font weight */
 }
 
 .theme-option:hover {
-  background-color: var(--bg-section-light);
+  background-color: var(--bg-section-light); /* Highlight on hover */
+  color: var(--text-primary); /* Keep text color consistent */
 }
 
+/* Icons within the dropdown options */
 .theme-option i {
-  font-size: 1.2rem; /* Adjust size for icons within the dropdown options */
+  font-size: 1.1rem; /* Slightly smaller icons in dropdown */
+  line-height: 1;
+}
+
+/* Specific colors for icons within the dropdown options */
+.theme-option .fa-sun {
+  color: var(--accent-yellow);
+}
+
+.theme-option .fa-moon {
+  color: #a0aec0;
+}
+
+.theme-option .fa-desktop {
+  color: var(--text-secondary);
 }
