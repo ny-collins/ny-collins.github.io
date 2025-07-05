@@ -291,6 +291,18 @@ img {
     .nav-links {
         padding : 2rem;    
     }
+    
+    .logo-block img {
+        height: 80px;
+    }
+
+    .logo-text h1 {
+        font-size: 1.2rem;
+  }
+
+  .logo-text p {
+        fobt-size: 0.7rem;
+    }
 }
 
 /* ===================== */
