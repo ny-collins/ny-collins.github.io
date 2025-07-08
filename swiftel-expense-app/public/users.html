@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Swiftel Expense App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Swiftel Expense</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/dashboard.html">Dashboard</a>
+                <a href="/requests.html">Expense Requests</a>
+                <a href="/users.html" id="user-management-link" class="active">User Management</a>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h1>User Management</h1>
+                </div>
+                <div class="header-right">
+                    <span id="welcome-message"></span>
+                    <button id="logout-btn">Logout</button>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="card">
+                    <h2>All Users</h2>
+                    <table class="requests-table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-list"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="users.js"></script>
+</body>
+</html>

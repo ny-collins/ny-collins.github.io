@@ -1,0 +1,35 @@
+CREATE DATABASE IF NOT EXISTS swiftel_expenses;
+USE swiftel_expenses;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('Admin', 'Employee', 'Employer') NOT NULL DEFAULT 'Employee',
+    reset_token VARCHAR(255),
+    reset_token_expires DATETIME,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE requests (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT NOT NULL,
+    description TEXT NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    status ENUM('PENDING', 'APPROVED', 'DISAPPROVED') NOT NULL DEFAULT 'PENDING',
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (userId) REFERENCES users(id)
+);
+
+CREATE TABLE request_approvals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    requestId INT NOT NULL,
+    employerId INT NOT NULL,
+    status ENUM('APPROVED', 'DISAPPROVED', 'NO_DECISION') NOT NULL DEFAULT 'NO_DECISION',
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (requestId) REFERENCES requests(id) ON DELETE CASCADE,
+    FOREIGN KEY (employerId) REFERENCES users(id) ON DELETE CASCADE,
+    UNIQUE (requestId, employerId)
+);
