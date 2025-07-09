@@ -1,0 +1,12 @@
+# robots.txt for Swiftel Fibre
+
+User-agent: *
+Allow: /
+
+# Block access to sensitive folders if they ever exist
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /admin/
+
+# Sitemap declaration
+Sitemap: https://swiftelfiber.co.ke/sitemap.xml
