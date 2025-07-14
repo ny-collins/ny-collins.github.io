@@ -27,6 +27,10 @@
             cursor: pointer;
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s ease;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         .switch-track {
@@ -48,32 +52,38 @@
         }
 
         .switch-knob {
-            width: 70px;
+            width: 90px;
             height: 70px;
             background-color: #222;
-            border-radius: 50%;
+            border-radius: 35px;
             position: absolute;
             top: 5px;
             right: 5px;
             box-shadow:
                 0 5px 15px rgba(0, 0, 0, 0.6),
-                inset 0 0 10px rgba(0, 0, 0, 0.7),
-                inset 0 0 5px rgba(255, 255, 255, 0.3),
-                inset 0 0 2px rgba(255, 255, 255, 0.5);
+                inset 0 1px 2px rgba(255, 255, 255, 0.3),
+                inset 0 -1px 2px rgba(0, 0, 0, 0.3),
+                inset 1px 0 2px rgba(255, 255, 255, 0.1),
+                inset -1px 0 2px rgba(0, 0, 0, 0.1),
+                inset 0 0 10px rgba(0, 0, 0, 0.8);
             transition: right 0.3s ease;
             display: flex;
             justify-content: center;
             align-items: center;
             background-image:
-                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.3) 0%, transparent 50%),
                 linear-gradient(to right,
                     transparent 30%, #444 30%, #444 35%, transparent 35%,
                     transparent 60%, #444 60%, #444 65%, transparent 65%
                 );
-            background-size: 100% 100%, 100% 100%, 100% 100%;
-            background-position: center, center, center;
+            background-size: 100% 100%;
+            background-position: center;
             background-repeat: no-repeat;
+            cursor: grab;
+        }
+
+        .switch-knob.dragging {
+            transition: none;
+            cursor: grabbing;
         }
 
         .switch-container.on .switch-track {
@@ -82,7 +92,7 @@
         }
 
         .switch-container.on .switch-knob {
-            right: calc(100% - 70px - 5px);
+            right: calc(100% - 90px - 5px);
         }
     </style>
 </head>
@@ -99,25 +109,120 @@
         const toggleSwitch = document.getElementById('toggleSwitch');
         const switchTrack = toggleSwitch.querySelector('.switch-track');
         const switchText = toggleSwitch.querySelector('.switch-text');
+        const switchKnob = toggleSwitch.querySelector('.switch-knob');
 
         let isOn = false;
+        let isDragging = false;
+        let initialPointerX;
+        let initialKnobRight;
+        let wasDragged = false;
 
-        function updateSwitchState() {
+        const knobRightMin = 5;
+        const knobRightMax = 200 - 90 - 5;
+
+        function updateSwitchState(animate = true) {
+            if (animate) {
+                switchKnob.style.transition = 'right 0.3s ease';
+            } else {
+                switchKnob.style.transition = 'none';
+            }
+
             if (isOn) {
                 toggleSwitch.classList.add('on');
                 switchText.textContent = 'ON';
+                switchKnob.style.right = `${knobRightMax}px`;
             } else {
                 toggleSwitch.classList.remove('on');
                 switchText.textContent = 'OFF';
+                switchKnob.style.right = `${knobRightMin}px`;
             }
         }
 
-        toggleSwitch.addEventListener('click', () => {
-            isOn = !isOn;
-            updateSwitchState();
+        function getPointerX(e) {
+            return e.touches ? e.touches[0].clientX : e.clientX;
+        }
+
+        switchKnob.addEventListener('mousedown', startDrag);
+        switchKnob.addEventListener('touchstart', startDrag);
+
+        function startDrag(e) {
+            isDragging = true;
+            wasDragged = false;
+            switchKnob.classList.add('dragging');
+            initialPointerX = getPointerX(e);
+            initialKnobRight = parseInt(getComputedStyle(switchKnob).right);
+
+            document.addEventListener('mousemove', dragMove);
+            document.addEventListener('mouseup', endDrag);
+            document.addEventListener('touchmove', dragMove);
+            document.addEventListener('touchend', endDrag);
+            document.addEventListener('touchcancel', endDrag);
+            e.preventDefault();
+        }
+
+        function dragMove(e) {
+            if (!isDragging) return;
+
+            wasDragged = true;
+            const currentPointerX = getPointerX(e);
+            const deltaX = currentPointerX - initialPointerX;
+
+            let newRight = initialKnobRight - deltaX;
+
+            newRight = Math.max(knobRightMin, Math.min(knobRightMax, newRight));
+
+            switchKnob.style.right = `${newRight}px`;
+
+            const knobCurrentPosition = newRight - knobRightMin;
+            const totalKnobTravel = knobRightMax - knobRightMin;
+            const halfwayPoint = totalKnobTravel / 2;
+
+            if (knobCurrentPosition < halfwayPoint) {
+                if (isOn) {
+                    isOn = false;
+                    toggleSwitch.classList.remove('on');
+                    switchText.textContent = 'OFF';
+                }
+            } else {
+                if (!isOn) {
+                    isOn = true;
+                    toggleSwitch.classList.add('on');
+                    switchText.textContent = 'ON';
+                }
+            }
+            e.preventDefault();
+        }
+
+        function endDrag() {
+            isDragging = false;
+            switchKnob.classList.remove('dragging');
+
+            document.removeEventListener('mousemove', dragMove);
+            document.removeEventListener('mouseup', endDrag);
+            document.removeEventListener('touchmove', dragMove);
+            document.removeEventListener('touchend', endDrag);
+            document.removeEventListener('touchcancel', endDrag);
+
+            const currentKnobRight = parseInt(getComputedStyle(switchKnob).right);
+            const halfwayPointValue = (knobRightMin + knobRightMax) / 2;
+
+            if (currentKnobRight < halfwayPointValue) {
+                isOn = false;
+            } else {
+                isOn = true;
+            }
+            updateSwitchState(true);
+        }
+
+        toggleSwitch.addEventListener('click', (e) => {
+            if (!wasDragged) {
+                isOn = !isOn;
+                updateSwitchState(true);
+            }
+            wasDragged = false;
         });
 
-        updateSwitchState();
+        updateSwitchState(true);
     </script>
 
 </body>
