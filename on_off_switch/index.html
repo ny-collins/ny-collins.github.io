@@ -119,6 +119,7 @@
 
         const knobRightMin = 5;
         const knobRightMax = 200 - 90 - 5;
+        const dragSensitivity = 1.5;
 
         function updateSwitchState(animate = true) {
             if (animate) {
@@ -167,7 +168,7 @@
             const currentPointerX = getPointerX(e);
             const deltaX = currentPointerX - initialPointerX;
 
-            let newRight = initialKnobRight - deltaX;
+            let newRight = initialKnobRight - (deltaX * dragSensitivity);
 
             newRight = Math.max(knobRightMin, Math.min(knobRightMax, newRight));
 
@@ -220,6 +221,15 @@
                 updateSwitchState(true);
             }
             wasDragged = false;
+        });
+
+        switchKnob.addEventListener('click', (e) => {
+            if (!wasDragged) {
+                isOn = !isOn;
+                updateSwitchState(true);
+            }
+            wasDragged = false;
+            e.stopPropagation();
         });
 
         updateSwitchState(true);
