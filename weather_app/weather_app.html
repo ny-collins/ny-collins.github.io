@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      transition: background 0.5s ease;
+      background: linear-gradient(to top, #74ebd5, #9face6);
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    #weather-card {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      width: 300px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    #weather-card:hover {
+      transform: scale(1.05);
+    }
+    input {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 10px;
+      width: 80%;
+    }
+    button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background-color: #4a90e2;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #357ab8;
+    }
+    .weather-icon {
+      width: 100px;
+      margin: 10px auto;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🌤️ Weather Dashboard</h1>
+  <div id="weather-card">
+    <input type="text" id="city-input" placeholder="Enter city name" />
+    <button onclick="getWeather()">Get Weather</button>
+    <div id="result" class="fade-in"></div>
+  </div>
+
+  <script>
+    async function getWeather() {
+      const city = document.getElementById('city-input').value;
+      const result = document.getElementById('result');
+      result.innerHTML = 'Loading...';
+
+      try {
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=78ab1dfd1f09e841bd822986df192f91&units=metric`
+        );
+        const data = await res.json();
+
+        if (data.cod !== 200) {
+          result.innerHTML = `<p>City not found.</p>`;
+          return;
+        }
+
+        const { name, main, weather } = data;
+        const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+        const temp = Math.round(main.temp);
+        const desc = weather[0].description;
+
+        result.innerHTML = `
+          <img src="${icon}" class="weather-icon" />
+          <h2>${name}</h2>
+          <p><strong>${temp}°C</strong></p>
+          <p>${desc}</p>
+        `;
+
+        updateBackground(weather[0].main);
+      } catch (error) {
+        result.innerHTML = `<p>Error fetching data.</p>`;
+      }
+    }
+
+    function updateBackground(condition) {
+      const body = document.body;
+      switch (condition.toLowerCase()) {
+        case 'clear':
+          body.style.background = 'linear-gradient(to top, #fbc2eb, #a6c1ee)';
+          break;
+        case 'clouds':
+          body.style.background = 'linear-gradient(to top, #d7d2cc, #304352)';
+          break;
+        case 'rain':
+          body.style.background = 'linear-gradient(to top, #4e54c8, #8f94fb)';
+          break;
+        case 'snow':
+          body.style.background = 'linear-gradient(to top, #e0eafc, #cfdef3)';
+          break;
+        default:
+          body.style.background = 'linear-gradient(to top, #74ebd5, #9face6)';
+      }
+    }
+  </script>
+</body>
+</html>
