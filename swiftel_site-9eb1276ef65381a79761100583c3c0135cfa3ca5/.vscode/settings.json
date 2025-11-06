@@ -1,9 +1,0 @@
-{
-  "css.lint.unknownAtRules": "ignore",
-  "tailwindCSS.experimental.classRegex": [
-    "class:list=\\{\\s*([^\\}\\s]*)\\s*\\}"
-  ],
-  "files.associations": {
-    "*.astro": "html"
-  }
-}
