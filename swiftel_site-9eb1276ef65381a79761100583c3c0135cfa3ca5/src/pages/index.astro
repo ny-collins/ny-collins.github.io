@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PackagesSection from '../components/PackagesSection.svelte';
+import AboutSection from '../components/AboutSection.astro';
+
+const homePackages = [
+  { name: "Home Basic", speed: "8", price: "1,500", description: "Perfect for light use, keeping you connected for all the essentials.", features: ["Ideal for 1-2 devices", "Smooth casual browsing and social media", "Reliable for email and online articles", "Standard Definition (SD) video streaming"] },
+  { name: "Home Standard", speed: "13", price: "2,000", description: "A great step up for streaming and small households.", features: ["Supports 2-3 devices simultaneously", "Seamless 720p/1080p HD video streaming", "Good for music streaming and online learning", "Stable for light work-from-home tasks"] },
+  { name: "Home Advanced", speed: "23", price: "2,500", description: "Our most popular plan, offering the best balance of speed and value.", isFeatured: true, features: ["Excellent for 3-5 devices", "Flawless Full HD (1080p) streaming on multiple screens", "Low-latency for competitive online gaming", "Perfect for video calls and remote work (Zoom, Teams)"] },
+  { name: "Home Premium", speed: "33", price: "3,000", description: "Supercharge your home with speed for busy families and 4K content.", features: ["Connects 5-7 devices with ease", "Handles multiple 4K (UHD) streams", "Fast downloads for large files", "Great for a growing number of smart home devices"] },
+  { name: "Home Ultra", speed: "43", price: "4,000", description: "Blazing-fast internet for power users and content creators.", features: ["Robust performance for 7+ devices", "Simultaneous 4K streaming, gaming, and video calls", "Ideal for content creators and live streamers", "Rapid cloud backups and file synchronization"] },
+  { name: "Home Elite", speed: "63", price: "6,000", description: "The ultimate speed for the most demanding, fully-connected homes.", features: ["Connects 10+ devices without slowdowns", "Uncompromised experience for any task, on any device", "Future-proof speed for emerging technologies", "Best for home servers and extensive smart homes"] },
+];
+
+const businessPackages = [
+  { name: "Business Basic", speed: "23", price: "6,500", description: "Reliable speed for small teams and daily operations.", features: ["Symmetrical upload/download speeds", "Ideal for Point-of-Sale systems and cloud backups", "Static IP address available upon request", "Priority business support"] },
+  { name: "Business Standard", speed: "33", price: "9,750", description: "Enhanced performance for growing businesses and HD video conferencing.", features: ["Supports multiple high-demand users", "Great for VoIP phone systems and large file transfers", "Static IP address included", "24/7 priority business support"], isFeatured: true },
+  { name: "Business Pro", speed: "43", price: "13,000", description: "High-capacity internet for data-intensive workflows and client servers.", features: ["Blazing-fast symmetrical speeds", "Perfect for hosting services and frequent cloud access", "Static IP address included", "Dedicated account manager"] },
+  { name: "Business Enterprise", speed: "63", price: "19,000", description: "Ultimate fibre power for large offices and mission-critical operations.", features: ["Uncompromised performance for 20+ users", "Handles heavy server traffic and enterprise applications", "Static IP address included", "Custom SLA and dedicated account manager"] },
+];
+---
+
+<Layout title="Swiftel Fibre | Home">
+  
+  <section class="grid-background container mx-auto px-6 py-16 lg:py-20 flex justify-center">
+    <div class="flex flex-col lg:flex-row items-center justify-center gap-16">
+      <div class="text-center lg:text-left">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-neutral-100 leading-tight">
+          Experience Uninterrupted<br />
+          <span class="text-primary">Fibre Speed.</span>
+        </h1>
+        <p class="mt-6 text-lg text-neutral-300 max-w-lg mx-auto lg:mx-0">
+          Swiftel Fibre brings you reliable, high-speed internet designed for the modern digital generation. Stream, work, and play without limits.
+        </p>
+        <div class="mt-8">
+          <a href="/packages" class="inline-block bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors">
+            Explore Packages
+          </a>
+        </div>
+      </div>
+      <div class="hidden lg:flex justify-center items-center">
+        <svg width="400" height="400" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="wifi-svg">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color: rgb(var(--color-primary));" />
+              <stop offset="100%" style="stop-color: rgb(var(--color-accent));" />
+            </linearGradient>
+          </defs>
+          <path d="M40.3 84.4C55.2 69.5 76.5 60 100 60s44.8 9.5 59.7 24.4" stroke="url(#grad1)" stroke-width="14" stroke-linecap="round" />
+          <path d="M19.5 63.6C42.8 40.3 69.9 28 100 28s57.2 12.3 80.5 35.6" stroke="url(#grad1)" stroke-width="14" stroke-linecap="round" />
+          <path d="M61.1 105.1C70.6 95.6 84.6 90 100 90s29.4 5.6 38.9 15.1" stroke="url(#grad1)" stroke-width="14" stroke-linecap="round" />
+          <circle cx="100" cy="126" r="14" fill="url(#grad1)" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <PackagesSection client:load {homePackages} {businessPackages} />
+
+</Layout>

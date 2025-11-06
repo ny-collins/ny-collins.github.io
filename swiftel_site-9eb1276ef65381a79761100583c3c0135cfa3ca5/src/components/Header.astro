@@ -1,0 +1,36 @@
+---
+import LogoGraphic from './LogoGraphic.astro';
+import ThemeToggler from './ThemeToggler.svelte';
+
+const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Learn", href: "/learn" },
+    { name: "Contact", href: "/contact" },
+]
+---
+<header class="bg-neutral-900/80 backdrop-blur-sm sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
+        <div>
+            <a href="/" class="block text-neutral-100">
+                {/* The only change is h-12 becoming h-24 */}
+                <img src="/logos/logo-with-text.svg" alt="Swiftel Fibre Logo" class="h-24 w-auto">
+            </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-6">
+            {navLinks.map(link => (
+                <a href={link.href} class="text-neutral-200 hover:text-primary transition-colors">
+                    {link.name}
+                </a>
+            ))}
+        </div>
+        <div class="flex items-center gap-4">
+            <ThemeToggler client:load />
+            <div class="hidden md:flex">
+              <a href="/contact" class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                  Get Connected
+              </a>
+            </div>
+        </div>
+    </nav>
+</header>

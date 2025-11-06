@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+
+const articles = [
+  { title: "What is Fibre Internet?", description: "A deep dive into the technology of light-speed data.", href: "/learn/what-is-fibre" },
+  { title: "How to Boost Your Wi-Fi Signal", description: "Practical tips to get faster, more reliable wireless internet in your home.", href: "/learn/how-to-boost-wifi" },
+  { title: "Mbps vs. Gbps: Understanding Speed", description: "What do these numbers mean, and how much speed do you really need?", href: "/learn/understanding-speed" },
+  { title: "What is a Hotspot?", description: "Learn about pay-as-you-go internet and how it offers flexible connectivity.", href: "/learn/what-is-a-hotspot" },
+];
+---
+<Layout title="Learn | Swiftel Fibre">
+  <section class="grid-background py-16 lg:py-24">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-4xl lg:text-5xl font-extrabold">Learning Center</h1>
+      <p class="text-lg text-neutral-300 mt-4 max-w-2xl mx-auto">
+        Everything you need to know about internet connectivity, from basic tips to deep-dive explanations.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-24">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {articles.map(article => (
+          <ArticleCard 
+            title={article.title}
+            description={article.description}
+            href={article.href}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

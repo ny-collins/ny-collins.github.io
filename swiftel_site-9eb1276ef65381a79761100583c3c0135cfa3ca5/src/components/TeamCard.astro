@@ -1,0 +1,16 @@
+---
+interface Props {
+  name: string;
+  title: string;
+}
+const { name, title } = Astro.props;
+---
+<div class="text-center">
+  <div class="mx-auto bg-neutral-700 h-24 w-24 md:h-32 md:w-32 rounded-full flex items-center justify-center mb-4">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-12 h-12 md:w-16 md:h-16 text-neutral-500">
+      <path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z" clip-rule="evenodd" />
+    </svg>
+  </div>
+  <h4 class="text-lg md:text-xl font-bold text-neutral-100">{name}</h4>
+  <p class="text-primary">{title}</p>
+</div>

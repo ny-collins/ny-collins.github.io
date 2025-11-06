@@ -1,0 +1,67 @@
+---
+import LogoGraphic from './LogoGraphic.astro';
+
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { name: "Facebook", href: "https://facebook.com/Geoffreynganga.co.ke", path: "M12 2C6.486 2 2 6.486 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H8.078v-2.89h2.36V9.845c0-2.332 1.393-3.62 3.523-3.62 1.02 0 2.087.182 2.087.182v2.29h-1.176c-1.162 0-1.525.721-1.525 1.46v1.751h2.594l-.414 2.89h-2.18v6.987C18.343 21.128 22 16.991 22 12c0-5.514-4.486-10-10-10z" },
+  { name: "Instagram", href: "https://instagram.com/swiftel.fibre", path: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" },
+  { name: "TikTok", href: "https://tiktok.com/@swiftel.fibre", path: "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" }
+];
+
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Learn", href: "/learn" },
+  { name: "About Us", href: "/about" },
+  { name: "Contact", href: "/contact" }
+];
+---
+<footer class="bg-card text-muted">
+  <div class="container mx-auto px-6 py-10">
+    <div class="flex flex-col items-center gap-8 md:grid md:grid-cols-3 md:items-start md:gap-8">
+      
+      <div class="flex flex-col items-center md:items-start md:col-span-1 space-y-4">
+        <a href="/" class="hidden md:block" aria-label="Back to homepage">
+          <img src="/logos/logo-with-tagline.svg" alt="Swiftel Fibre Official Logo" class="h-28 w-auto text-DEFAULT">
+        </a>
+        <a href="/" class="md:hidden" aria-label="Back to homepage">
+          <img src="/logos/logo-with-text.svg" alt="Swiftel Fibre Logo" class="h-16 w-auto text-DEFAULT">
+        </a>
+        <p class="text-sm text-muted text-center md:text-left pt-2 md:pt-0">
+          &copy; {currentYear} Swiftel Fibre. All Rights Reserved.
+        </p>
+      </div>
+      
+      <div class="text-center md:text-left">
+        <h4 class="font-semibold text-DEFAULT mb-4 tracking-wider uppercase text-sm">Quick Links</h4>
+        <ul class="flex flex-row flex-wrap justify-center gap-x-6 gap-y-2 md:flex-col md:items-start md:gap-3">
+          {navLinks.map(link => (
+            <li><a href={link.href} class="hover:text-primary transition-colors">{link.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="text-center md:text-left">
+        <h4 class="font-semibold text-DEFAULT mb-4 tracking-wider uppercase text-sm">Follow Us</h4>
+        <div class="flex items-center justify-center md:justify-start gap-6">
+          {socialLinks.map(social => (
+            <a href={social.href} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-muted hover:text-primary transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill={social.name === 'Instagram' ? 'none' : 'currentColor'} stroke="currentColor" stroke-width={social.name === 'Instagram' ? 2 : 0} viewBox="0 0 24 24">
+                {social.name === 'Instagram' ? 
+                  <>
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </> : 
+                  <path d={social.path} />
+                }
+              </svg>
+              <span class="hidden md:inline">{social.name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>

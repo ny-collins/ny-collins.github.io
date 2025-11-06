@@ -1,0 +1,89 @@
+---
+import TeamCard from './TeamCard.astro';
+
+const journey = [
+  { year: "2020", title: "Swiftel Fibre Founded", description: "Began operations with a vision for future-proof, affordable connectivity." },
+  { year: "2021", title: "First Fibre Rollout", description: "Launched our initial fibre network in Nairobi, serving our very first customers." },
+  { year: "2023", title: "Expanded Coverage", description: "Significantly grew our fibre footprint across Kasarani and Njiru sub-counties." },
+  { year: "2024", title: "Launched Business Solutions", description: "Introduced a suite of dedicated services for enterprises and SMEs." },
+  // THE NEW TIMELINE EVENT IS ADDED HERE
+  { year: "2025", title: "Hotspot Solutions Introduced", description: "Launched flexible, pay-as-you-go internet access via dedicated local hotspots." },
+];
+const promises = [
+    { title: "Transparent Pricing", description: "No hidden fees, no surprise charges. What you see is what you get, every month.", icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182s-3.07-.879-4.242 0-1.172 2.303 0 3.182l.879.659M7.5 12.75h9" />` },
+    { title: "Reliable Speed", description: "We deliver consistent, high-speed fibre you can count on for streaming, gaming, and working from home.", icon: `<path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />` },
+    { title: "Local Support", description: "Our friendly support team is based right here in Nairobi, ready to help you whenever you need it.", icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />` },
+];
+const leadership = [
+    { name: "Antony Mwaura", title: "CEO & Founder" },
+    { name: "Faith Nduta", title: "Head of Customer Support" },
+    { name: "Dennis Murithi", title: "Manager" },
+    { name: "Francis Njoroge", title: "ICT Consultant" },
+];
+---
+<div class="space-y-28 lg:space-y-40">
+  <section class="pt-20 lg:pt-32 relative overflow-hidden">
+    <div class="absolute inset-0 flex items-center justify-center -z-10">
+        <img 
+            src="/logos/logo-stacked.svg" 
+            alt="" 
+            class="h-[1000px] w-auto text-muted/50 opacity-10" 
+            aria-hidden="true"
+        >
+    </div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-extrabold">Our Journey</h2>
+        <p class="text-lg text-muted mt-4">From a simple idea to a trusted local provider.</p>
+      </div>
+      <div class="timeline-container">
+        {journey.map(item => (
+          <div class="timeline-item">
+            <div class="timeline-year">{item.year}</div>
+            <div class="timeline-content">
+              <h4 class="text-xl font-bold">{item.title}</h4>
+              <p class="text-muted mt-1">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-extrabold">Our Promise to You</h2>
+        <p class="text-lg text-muted mt-4">We're committed to more than just internet. We're committed to you.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {promises.map(promise => (
+          <div class="bg-card p-6 md:p-8 rounded-lg text-center">
+            <div class="mx-auto bg-primary/20 h-16 w-16 rounded-full flex items-center justify-center mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-primary">
+                <Fragment set:html={promise.icon} />
+              </svg>
+            </div>
+            <h4 class="text-2xl font-bold">{promise.title}</h4>
+            <p class="text-muted mt-2">{promise.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-20 lg:pb-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-extrabold">Meet Our Leadership</h2>
+            <p class="text-lg text-muted mt-4">Behind every great connection is a team of passionate experts.</p>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {leadership.map(person => (
+                <TeamCard name={person.name} title={person.title} />
+            ))}
+        </div>
+    </div>
+  </section>
+</div>
