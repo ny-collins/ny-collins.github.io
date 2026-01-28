@@ -1,0 +1,370 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{mathptmx} % Times New Roman-like font
+\usepackage{titlesec} % For custom section formatting
+
+% Page Layout
+\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+% Colors (Minimalist)
+\definecolor{CommentGreen}{RGB}{34, 139, 34}
+\definecolor{KeywordBlue}{RGB}{0, 0, 128}
+\definecolor{StringTeal}{RGB}{0, 128, 128}
+
+% Code Styling (Clean, Frame only, no background color)
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{KeywordBlue}\bfseries,
+    commentstyle=\color{CommentGreen}\itshape,
+    stringstyle=\color{StringTeal},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    frame=lines,            % Top and bottom lines only
+    rulecolor=\color{black},
+    breaklines=true,
+    showstringspaces=false,
+    tabsize=4,
+    captionpos=b,
+    abovecaptionskip=10pt
+}
+
+\title{\textbf{Introduction to Programming}\\CAT 1 - Solution Manual}
+\author{Collins Mwangi}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Overview}
+This document contains the comprehensive solutions to the "CAT 1" examination. It utilizes a dual-track approach: providing the standard academic answer alongside an architectural analysis ("Deep Dive") to explain the underlying mechanisms of the C language.
+
+\hrule
+\vspace{1cm}
+
+% =================================================================================
+% QUESTION 1
+% =================================================================================
+\subsection*{Question 1 (4 Marks)}
+\textbf{Write a C program to find the maximum of three numbers using conditional operators.}
+
+\vspace{0.3cm}
+\textbf{Solution:}
+
+The Conditional Operator (Ternary) syntax is \texttt{condition ? true\_value : false\_value}. To determine the maximum of three numbers ($a, b, c$), we nest the operators to check all conditions in a single line.
+
+\begin{lstlisting}
+#include <stdio.h>
+
+int main() {
+    int a, b, c, max;
+    
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &a, &b, &c);
+
+    // Logic: If a>b, check if a>c. If b>a, check if b>c.
+    max = (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c);
+
+    printf("Maximum number is: %d\n", max);
+    return 0;
+}
+\end{lstlisting}
+
+\vspace{0.2cm}
+\textit{\textbf{Architectural Insight:} The ternary operator compresses control flow into a single expression. Unlike \texttt{if-else} blocks, modern compilers can often optimize ternary operations into specific Conditional Move (CMOV) CPU instructions, avoiding expensive branch mispredictions.}
+
+\vspace{0.8cm}
+
+% =================================================================================
+% QUESTION 2
+% =================================================================================
+\subsection*{Question 2 (3 Marks)}
+\textbf{Write a C Program to find the sum of digits in a given number.}
+
+\vspace{0.3cm}
+\textbf{Solution:}
+
+We use the Modulo operator (\texttt{\%}) to isolate the last digit of the number, and Integer Division (\texttt{/}) to truncate the last digit after it has been processed.
+
+\begin{lstlisting}
+#include <stdio.h>
+
+int main() {
+    int n, sum = 0, digit;
+    
+    printf("Enter a number: ");
+    scanf("%d", &n); // Example input: 123
+
+    while (n > 0) {
+        digit = n % 10;  // 1. Extract last digit (e.g., 3)
+        sum += digit;    // 2. Add to accumulator
+        n /= 10;         // 3. Remove last digit (123 becomes 12)
+    }
+
+    printf("Sum of digits = %d\n", sum);
+    return 0;
+}
+\end{lstlisting}
+
+\vspace{0.8cm}
+
+% =================================================================================
+% QUESTION 3
+% =================================================================================
+\subsection*{Question 3 (8 Marks)}
+\textbf{Study the provided code snippets (a to e) and identify errors or predict the output.}
+
+\vspace{0.3cm}
+\textbf{Part (a): Syntax Analysis}
+\begin{lstlisting}
+main {
+    Int $-10$:   // Error 1: 'Int' is capitalized; '$-10' is an invalid name.
+    Char"d" i    // Error 2: 'Char' is capitalized; invalid declaration syntax.
+    K=pow(5,6);  // Error 3: 'K' is undefined (case sensitive); missing <math.h>.
+    I+=k         // Error 4: 'I' vs 'i' case mismatch.
+}
+\end{lstlisting}
+
+\vspace{0.3cm}
+\textbf{Part (c): Bitwise Logic}
+\begin{lstlisting}
+int x = 753; // Binary: ...10 1111 0001
+int y = 722; // Binary: ...10 1101 0010
+// printf(" x & y is %@" x & y):
+// Error: Invalid format specifier '%@'.
+// Logic: 753 & 722 = 720 (Binary ...10 1101 0000)
+\end{lstlisting}
+
+\vspace{0.3cm}
+\textbf{Part (e): Pointer Arithmetic Trace}
+\begin{lstlisting}
+int b[] = {10, 20, 30, 40, 50};
+int *k = b; // Points to b[0] (10)
+
+for (i = 0; i < 4; i++) {
+    printf("\n%d", *k); // Prints current value
+    k++; // Increments pointer address by sizeof(int)
+}
+\end{lstlisting}
+\textbf{Output:} 10, 20, 30, 40
+
+\vspace{0.2cm}
+\textit{\textbf{Architectural Insight:} The assignment \texttt{k = b} is valid because an array name in C decays into a pointer to its first element (\texttt{\&b[0]}). The operation \texttt{k++} does not simply add 1 to the memory address; it adds \texttt{sizeof(int)} (typically 4 bytes), effectively jumping the pointer to the next integer slot in memory.}
+
+\vspace{0.8cm}
+
+% =================================================================================
+% QUESTION 4
+% =================================================================================
+\subsection*{Question 4 (5 Marks)}
+\textbf{Write a code snippet that performs Bitwise AND, OR, and XOR on $M=25$ and $N=5$.}
+
+\vspace{0.3cm}
+\textbf{Solution:}
+
+\begin{lstlisting}
+#include <stdio.h>
+
+int main() {
+    int M = 25; // Binary: 11001
+    int N = 5;  // Binary: 00101
+
+    // Bitwise AND (&): 1 if both bits are 1 -> 00001 (1)
+    printf("M & N = %d\n", M & N);
+
+    // Bitwise OR (|): 1 if either bit is 1 -> 11101 (29)
+    printf("M | N = %d\n", M | N);
+
+    // Bitwise XOR (^): 1 if bits differ -> 11100 (28)
+    printf("M ^ N = %d\n", M ^ N);
+
+    return 0;
+}
+\end{lstlisting}
+
+\vspace{0.8cm}
+
+% =================================================================================
+% QUESTION 5
+% =================================================================================
+\subsection*{Question 5 (4 Marks)}
+\textbf{Write a C function named \texttt{calculateArea} that accepts a radius parameter and returns the area. Use it in the main function.}
+
+\vspace{0.3cm}
+\textbf{Solution:}
+
+\begin{lstlisting}
+#include <stdio.h>
+#include <math.h>
+#include <float.h>
+
+double calculateArea(double radius) {
+    // 'static' ensures initialization happens only once (Lazy Initialization)
+    static double pi = 0.0;
+    if (pi == 0.0) {
+        pi = acos(-1.0); // Calculates PI to machine's maximum precision
+    }
+    return pi * radius * radius;
+}
+
+int main() {
+    double r = 4.0;
+    // 'DBL_DIG' ensures we print the maximum significant digits supported
+    printf("Area = %.*f\n", DBL_DIG, calculateArea(r));
+    return 0;
+}
+\end{lstlisting}
+
+\vspace{0.2cm}
+\textit{\textbf{Architectural Insight:} Using \texttt{acos(-1.0)} is superior to hardcoding \texttt{3.14} or using \texttt{M\_PI} (which is non-standard). It allows the specific hardware architecture to define the precision. The \texttt{static} variable ensures that the computationally expensive \texttt{acos} function runs only once, regardless of how many times \texttt{calculateArea} is called.}
+
+\vspace{0.8cm}
+
+% =================================================================================
+% QUESTION 6
+% =================================================================================
+\subsection*{Question 6 (4 Marks)}
+\textbf{Identify standard I/O functions and the required header file.}
+
+\vspace{0.3cm}
+\textbf{Header File:} \texttt{<stdio.h>} (Standard Input Output Header)
+
+\textbf{Standard Functions:}
+\begin{itemize}
+    \item \texttt{printf()}: Formatted output to the console.
+    \item \texttt{scanf()}: Formatted input from the keyboard.
+    \item \texttt{fgets()}: Safe string input (prevents buffer overflow).
+    \item \texttt{getchar() / putchar()}: Single character Input/Output.
+\end{itemize}
+
+\vspace{0.8cm}
+
+% =================================================================================
+% QUESTION 7
+% =================================================================================
+\subsection*{Question 7 (5 Marks)}
+\textbf{Write a C program that prompts the user for their name and age, then displays a formatted sentence.}
+
+\vspace{0.3cm}
+\textbf{Solution:}
+
+\begin{lstlisting}
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char name[50];
+    int age;
+
+    printf("Enter full name: ");
+    // 'fgets' is used instead of 'scanf' to capture names with spaces
+    fgets(name, 50, stdin); 
+    // Remove the newline character captured by fgets
+    name[strcspn(name, "\n")] = 0; 
+
+    printf("Enter age: ");
+    scanf("%d", &age); // Address-of operator (&) is required for integers
+
+    printf("Your name is %s and you are %d years old.\n", name, age);
+    return 0;
+}
+\end{lstlisting}
+
+\vspace{0.8cm}
+
+% =================================================================================
+% QUESTION 8
+% =================================================================================
+\subsection*{Question 8 (4 Marks)}
+\textbf{Differentiate between an if-else statement and a switch statement.}
+
+\vspace{0.3cm}
+\textbf{Solution:}
+
+\begin{enumerate}
+    \item \textbf{Expression Type:} \texttt{if-else} evaluates Boolean expressions (Ranges/Logical conditions). \texttt{switch} evaluates strict equality of Integers or Characters.
+    \item \textbf{Performance:} \texttt{switch} is often compiled into a Jump Table ($O(1)$ complexity), making it faster for large numbers of cases. \texttt{if-else} executes linearly ($O(N)$).
+    \item \textbf{Flow Control:} \texttt{switch} exhibits "fallthrough" behavior (executing subsequent cases) unless a \texttt{break} statement is used. \texttt{if-else} executes only one block.
+\end{enumerate}
+
+\vspace{0.8cm}
+
+% =================================================================================
+% QUESTION 9
+% =================================================================================
+\subsection*{Question 9 (6 Marks)}
+\textbf{Write a program to display Distinction ($\ge 75$), Pass ($50-74$), or Fail ($<50$) based on marks.}
+
+\vspace{0.3cm}
+\textbf{Solution:}
+
+\begin{lstlisting}
+#include <stdio.h>
+
+int main() {
+    int marks;
+    char *grade; // Use a pointer for string literals
+
+    printf("Enter marks: ");
+    scanf("%d", &marks);
+
+    if (marks >= 75) {
+        grade = "Distinction"; // Pointer now points to this string literal
+    } else if (marks >= 50) {
+        grade = "Pass";
+    } else {
+        grade = "Fail";
+    }
+
+    printf("Result: %s\n", grade);
+    return 0;
+}
+\end{lstlisting}
+
+\vspace{0.8cm}
+
+% =================================================================================
+% QUESTION 10
+% =================================================================================
+\subsection*{Question 10 (4 Marks)}
+\textbf{Write a C program using a loop to display the first 10 even numbers starting from 2.}
+
+\vspace{0.3cm}
+\textbf{Solution:}
+
+\begin{lstlisting}
+#include <stdio.h>
+
+int main() {
+    int i;
+    // Optimization: Increment by 2 directly to avoid modulo checks
+    // Loop runs from 2 to 20 (inclusive)
+    for (i = 2; i <= 20; i += 2) {
+        printf("%d\n", i);
+    }
+    return 0;
+}
+\end{lstlisting}
+
+\vspace{0.8cm}
+
+% =================================================================================
+% QUESTION 11
+% =================================================================================
+\subsection*{Question 11 (3 Marks)}
+\textbf{Explain the meaning of a conditional statement in C programming.}
+
+\vspace{0.3cm}
+\textbf{Solution:}
+
+A Conditional Statement (or Control Flow Statement) is a programming construct that allows the execution path of a program to branch based on the evaluation of a Boolean expression (True or False).
+
+\vspace{0.2cm}
+\textit{\textbf{Architectural Insight:} At the machine level, these statements compile down to "Conditional Jump" instructions (like \texttt{JZ} or \texttt{JNE}). If a CPU flag is set by a comparison, the Instruction Pointer jumps to a new memory address; otherwise, it proceeds sequentially to the next instruction.}
+
+\end{document}
