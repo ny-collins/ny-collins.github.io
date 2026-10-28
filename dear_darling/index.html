@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+    <title>Dear Darling — For Faith 💖</title>
+    <meta name="description" content="A digital keepsake vault of heartfelt letters, comfort, and memories handcrafted especially for Faith." />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbf5f7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#07111e" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/envelopes.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/features.css" />
+  </head>
+  <body>
+    <!-- Background Ambient Particles Canvas -->
+    <canvas id="particlesCanvas" aria-hidden="true"></canvas>
+
+    <div class="app-container">
+      <!-- Top Navigation / Utility Bar -->
+      <header class="top-bar">
+        <div class="dedication-badge">
+          <span class="sparkle">✨</span>
+          <span>Dedicated to Faith</span>
+        </div>
+        <div class="top-bar-controls">
+          <button type="button" class="audio-toggle-btn" id="audioToggleBtn" aria-label="Toggle ocean soundscape">
+            <span class="icon">🎵</span>
+            <span>Ocean Soundscape</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <main>
+        <section class="hero">
+          <span class="hero-eyebrow">An Everlasting Keepsake Vault</span>
+          <h1 class="hero-title">
+            Dear <span class="name-highlight">Faith</span>
+          </h1>
+          <p class="hero-description">
+            A quiet sanctuary crafted just for you. Here are eight letters waiting for whenever you need them — whether for a gentle smile, an embrace on a tough day, or a reminder of how deeply cherished you are.
+          </p>
+
+          <!-- Vault Progress Card -->
+          <div class="vault-progress-card">
+            <div class="progress-header">
+              <span class="progress-label">
+                <span>📬</span>
+                <span>Your Vault Progress</span>
+              </span>
+              <span class="progress-counter" id="progressCounter">0 of 8 Keepsakes Unlocked</span>
+            </div>
+            <div class="progress-bar-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <p class="progress-subtext" id="progressSubtext">
+              Take your time. Pick the letter that speaks to you right now ✨
+            </p>
+          </div>
+        </section>
+
+        <!-- Category Filters -->
+        <nav class="filter-section" aria-label="Filter keepsakes by category">
+          <button type="button" class="filter-chip active" data-category="all">All Keepsakes</button>
+          <button type="button" class="filter-chip" data-category="comfort">Comfort & Calm</button>
+          <button type="button" class="filter-chip" data-category="joy">Joy & Smiles</button>
+          <button type="button" class="filter-chip" data-category="love">Love & Warmth</button>
+          <button type="button" class="filter-chip" data-category="inspiration">Inner Strength</button>
+          <button type="button" class="filter-chip" data-category="favorites">💖 My Favorites</button>
+        </nav>
+
+        <!-- Dynamic Keepsake Envelopes Grid -->
+        <section class="vault-grid" id="vaultGrid" aria-label="Letters collection">
+          <!-- Dynamically populated by app.js -->
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="vault-footer">
+        <p class="footer-quote">
+          “You are my favorite thought in a busy day.”
+        </p>
+        <p class="footer-copy">
+          Handcrafted with pure love & care for Faith • Always & Forever
+        </p>
+        <button type="button" class="footer-action-btn" id="easterEggBtn">
+          A little secret note for you &hearts;
+        </button>
+      </footer>
+    </div>
+
+    <!-- Native Accessible <dialog> for Letters -->
+    <dialog id="letterModal" aria-labelledby="letterModalTitle" aria-modal="true">
+      <div class="letter-sheet">
+        <div class="letter-top-accent"></div>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close letter">
+          &times;
+        </button>
+        <div class="letter-content-scroll" id="letterScrollContainer">
+          <!-- Populated dynamically by modal.js -->
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Application Script -->
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
